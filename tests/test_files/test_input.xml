@@ -1,0 +1,8 @@
+<BAAN>
+    <naam>Testbaan</naam>
+    <lengte>100</lengte>
+</BAAN>
+<VOERTUIG>
+    <baan>Testbaan</baan>
+    <positie>10</positie>
+</VOERTUIG>

@@ -1,0 +1,8 @@
+<BAAN>
+    <naam>Snelweg</naam>
+    <lengte>500</lengte>
+</BAAN>
+<VOERTUIGGENERATOR>
+    <baan>Snelweg</baan>
+    <frequentie>5</frequentie>
+</VOERTUIGGENERATOR>

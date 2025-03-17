@@ -1,0 +1,13 @@
+<BAAN>
+    <naam>Hoofdstraat</naam>
+    <lengte>200</lengte>
+</BAAN>
+<VERKEERSLICHT>
+    <baan>Hoofdstraat</baan>
+    <positie>150</positie>
+    <cyclus>30</cyclus>
+</VERKEERSLICHT>
+<VOERTUIG>
+    <baan>Hoofdstraat</baan>
+    <positie>100</positie>
+</VOERTUIG>
