@@ -1,0 +1,9 @@
+# ninja log v6
+129	1050	7637642220066958	CMakeFiles/TrafficSimulatorTests.dir/src/TrafficLight.cpp.obj	3800fb9df3e6ea01
+147	1001	7637642220223724	CMakeFiles/TrafficSimulatorTests.dir/src/VehicleGenerator.cpp.obj	ebe595c455d5b354
+25	1547	7637765200518420	CMakeFiles/TrafficSimulatorTests.dir/tests/tests.cpp.obj	f48c22ad1bb5914
+105	1151	7637642219753380	CMakeFiles/TrafficSimulatorTests.dir/src/Vehicle.cpp.obj	437f545d71f5cd47
+86	1079	7637642219596753	CMakeFiles/TrafficSimulatorTests.dir/src/Road.cpp.obj	6010f3aecf69954c
+68	1212	7637765200944374	CMakeFiles/TrafficSimulatorTests.dir/src/Simulation.cpp.obj	91e14a2d0ad39e8a
+1547	3224	7637765215736665	TrafficSimulatorTests.exe	2ec19ecc4d07760e
+3	400	7639246653172346	build.ninja	84982171f9ce1e89

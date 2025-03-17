@@ -1,0 +1,5 @@
+C:/Users/youri/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/TrafficSimulator.dir
+C:/Users/youri/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/TrafficSimulatorTests.dir
+C:/Users/youri/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/run_tests.dir
+C:/Users/youri/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/youri/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/rebuild_cache.dir

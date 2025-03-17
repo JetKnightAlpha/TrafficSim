@@ -1,0 +1,5 @@
+BAAN Middelheimlaan 500
+VERKEERSLICHT Middelheimlaan 400 20
+VOERTUIG Middelheimlaan 20
+VOERTUIG Middelheimlaan 0
+VOERTUIGGENERATOR Middelheimlaan 5
