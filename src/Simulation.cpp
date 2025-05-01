@@ -6,35 +6,30 @@
 #include "VehicleGenerator.h"
 #include <iostream>
 
-// Constructor
 Simulation::Simulation()
     : currentTime(0), stepCounter(0), vehicleCounter(1) {
-    // Additional initialization can be done here if needed
 }
 
-// Load simulation data from a file
 void Simulation::loadFromFile(const std::string& filename) {
     Parser::parseFile(filename, roads, generators);
 }
 
-// Run one simulation step
 void Simulation::runStep() {
     for (auto* road : roads)
         for (auto* vehicle : road->getVehicles())
-            vehicle->calculateAcceleration(), vehicle->update(0.0166); // Update vehicle state
+            vehicle->calculateAcceleration(), vehicle->update(0.0166);
 
     for (auto* road : roads)
         for (auto* light : road->getTrafficLights())
-            light->update(currentTime); // Update traffic lights
+            light->update(currentTime);
 
     for (auto* generator : generators)
-        generator->update(currentTime); // Update vehicle generators
+        generator->update(currentTime);
 
-    currentTime += 0.0166;  // Update the current time
-    stepCounter++;          // Increment the step counter
+    currentTime += 0.0166;
+    stepCounter++;
 }
 
-// Run the simulation for a set number of steps
 void Simulation::run() {
     for (int i = 0; i < 1000; ++i) {
         runStep();
@@ -42,13 +37,11 @@ void Simulation::run() {
     }
 }
 
-// Output the current state of the simulation
 void Simulation::outputState() const {
-    int vehicleCounter = 1; // Reset the vehicle counter for each outputState
+    int vehicleCounter = 1;
 
     std::cout << "Tijd: " << stepCounter << std::endl;
 
-    // Display vehicles' state
     for (const Road* road : roads) {
         for (const Vehicle* vehicle : road->getVehicles()) {
             std::cout << "Voertuig " << vehicleCounter
@@ -59,13 +52,12 @@ void Simulation::outputState() const {
                       << std::endl
                       << "-> snelheid: " << vehicle->getSpeed()
                       << "\n" << std::endl ;
-            vehicleCounter++; // Increment the vehicle counter for each vehicle
+            vehicleCounter++;
         }
 
-        // Display traffic light status
         for (const TrafficLight* light : road->getTrafficLights()) {
             std::cout << "Verkeerslicht is "
-                      << (light->isGreen() ? "groen" : "rood") // Check if the light is green or red
+                      << (light->isGreen() ? "groen" : "rood")
                       << "\n" << std::endl;
         }
 
@@ -73,18 +65,17 @@ void Simulation::outputState() const {
     }
 }
 
-// Destructor to clean up resources
 Simulation::~Simulation() {
     for (auto* road : roads) {
         for (auto* vehicle : road->getVehicles())
-            delete vehicle;  // Delete each vehicle
+            delete vehicle;
         for (auto* light : road->getTrafficLights())
-            delete light;     // Delete each traffic light
-        delete road;  // Delete the road itself
+            delete light;
+        delete road;
     }
 
     for (auto* gen : generators) {
-        delete gen;  // Delete each vehicle generator
+        delete gen;
     }
 }
 
