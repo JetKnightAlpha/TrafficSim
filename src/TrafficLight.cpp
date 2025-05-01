@@ -1,34 +1,19 @@
 #include "TrafficLight.h"
 
-TrafficLight::TrafficLight(const std::string &roadName, double position, double cycle)
-    : fRoadName(roadName),
-      fPosition(position),
-      fCycle(cycle),
-      fTimeSinceChange(0.0),
-      fGreen(true)
-{
-}
+TrafficLight::TrafficLight(Road* road, int position, int cycle)
+    : road(road), position(position), cycle(cycle), green(true), lastSwitchTime(0) {}
 
-TrafficLight::State TrafficLight::getState() const {
-    return fGreen ? State::Green : State::Red;
-}
-
-bool TrafficLight::isGreen() const {
-    return fGreen;
-}
-
-void TrafficLight::update(double deltaT) {
-    fTimeSinceChange += deltaT;
-    if (fTimeSinceChange >= fCycle) {
-        fGreen = !fGreen;
-        fTimeSinceChange = 0.0;
+void TrafficLight::update(double time) {
+    if (time - lastSwitchTime > cycle) {
+        green = !green;
+        lastSwitchTime = time;
     }
 }
 
-std::string TrafficLight::getRoadName() const {
-    return fRoadName;
-}
+bool TrafficLight::isGreen() const { return green; }
 
-double TrafficLight::getPosition() const {
-    return fPosition;
+int TrafficLight::getPosition() const { return position; }
+
+std::string TrafficLight::getStatus() const {
+    return green ? "green" : "red"; // Return status as "green" or "red"
 }

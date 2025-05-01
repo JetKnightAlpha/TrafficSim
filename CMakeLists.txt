@@ -12,6 +12,13 @@ add_executable(TrafficSimulator
         src/Vehicle.cpp
         src/TrafficLight.cpp
         src/VehicleGenerator.cpp
+        src/Parser.cpp
+        tests/tests.cpp
+        tinyxml/tinyxml.cpp
+        tinyxml/tinystr.cpp
+        tinyxml/tinyxmlerror.cpp
+        tinyxml/tinyxmlparser.cpp
+
 )
 
 target_include_directories(TrafficSimulator PUBLIC
@@ -31,6 +38,12 @@ add_executable(TrafficSimulatorTests
         src/Vehicle.cpp
         src/TrafficLight.cpp
         src/VehicleGenerator.cpp
+        src/Parser.cpp
+        tests/tests.cpp
+        tinyxml/tinyxml.cpp
+        tinyxml/tinystr.cpp
+        tinyxml/tinyxmlerror.cpp
+        tinyxml/tinyxmlparser.cpp
 )
 
 target_include_directories(TrafficSimulatorTests PUBLIC

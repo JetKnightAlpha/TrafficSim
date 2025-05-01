@@ -1,20 +1,18 @@
-#ifndef INC_VEHICLEGENERATOR_H
-#define INC_VEHICLEGENERATOR_H
+// VehicleGenerator.h
+#ifndef VEHICLEGENERATOR_H
+#define VEHICLEGENERATOR_H
 
-#include <string>
+class Road;
 
 class VehicleGenerator {
 public:
-    VehicleGenerator(const std::string &roadName, double frequency);
-    void update(double deltaT);
-    bool shouldGenerate() const;
-    void resetTimer();
-    std::string getRoadName() const;
+    VehicleGenerator(Road* road, int frequency);
 
+    void update(double currentTime);
 private:
-    std::string fRoadName;
-    double fFrequency;
-    double fTimeSinceLast;
+    Road* road;
+    int frequency;
+    double lastGenerated;
 };
 
-#endif // INC_VEHICLEGENERATOR_H
+#endif

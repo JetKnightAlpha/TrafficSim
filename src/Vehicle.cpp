@@ -1,95 +1,64 @@
 #include "Vehicle.h"
+#include "Road.h"
 #include <cmath>
+#include "TrafficLight.h"
+#include "Vehicle.h"
 #include <algorithm>
 
-Vehicle::Vehicle(double speed)
-    : fRoadName("test_road"),
-      fPosition(0.0),
-      fSpeed(speed),
-      fAcceleration(0.0),
-      fCurrentVmax(kVmax)
-{
+const double Vehicle::l    = 4;
+const double Vehicle::Vmax = 16.6;
+const double Vehicle::amax = 1.44;
+const double Vehicle::bmax = 4.61;
+const double Vehicle::F_MIN = 4;
+const double Vehicle::dt   = 0.0166;
+const double Vehicle::xs   = 50;
+const double Vehicle::xs0  = 15;
+const double Vehicle::s    = 0.4;
+
+Vehicle::Vehicle(Road* road, double position)
+    : road(road), position(position), speed(0), acceleration(0), vmax(Vmax) {}
+
+double Vehicle::getPosition() const { return position; }
+
+void Vehicle::calculateAcceleration() {
+    // Calculate acceleration based on the following distance and speed
+    if (road->hasLeadingVehicle(this)) {
+        // Get the position and speed of the leading vehicle
+        Vehicle* leading_vehicle = road->getLeadingVehicle(this);
+        double delta_x = leading_vehicle->getPosition() - position - l;
+        double delta_v = speed - leading_vehicle->getSpeed();
+
+        // Calculate interaction term δ
+        double delta = F_MIN + std::max(0.0, (speed + delta_v) / (2 * std::sqrt(amax * bmax))) * delta_x;
+        acceleration = amax * (1 - std::pow(speed / vmax, 4) - std::pow(delta, 2));
+    } else {
+        // If no leading vehicle, vehicle accelerates freely
+        acceleration = amax * (1 - std::pow(speed / vmax, 4));
+    }
 }
 
-Vehicle::Vehicle(const std::string &roadName, double position)
-    : fRoadName(roadName),
-      fPosition(position),
-      fSpeed(0.0),
-      fAcceleration(0.0),
-      fCurrentVmax(kVmax)
-{
+void Vehicle::update(double deltaTime) {
+    if (speed + acceleration * deltaTime < 0) {
+        position -= (speed * speed) / (2 * acceleration);  // Adjust position if speed goes negative
+        speed = 0;  // Set speed to zero
+    } else {
+        speed = std::min(speed + acceleration * deltaTime, vmax);  // Update speed
+        position += speed * deltaTime + (acceleration * deltaTime * deltaTime) / 2;  // Update position
+    }
 }
 
-void Vehicle::setPosition(double position) {
-    fPosition = position;
+void Vehicle::applyTrafficLightRules() {
+    for (auto* light : road->getTrafficLights()) {
+        if (!light->isGreen() && light->getPosition() > position &&
+            light->getPosition() - position < xs0) {
+            // Smooth deceleration if near a red light
+            double distanceToLight = light->getPosition() - position;
+            acceleration = std::min(-bmax, -std::pow(distanceToLight / xs0, 2) * amax);
+            }
+    }
 }
 
-double Vehicle::getAcceleration() const {
-    return fAcceleration;
-}
-
-double Vehicle::getPosition() const {
-    return fPosition;
-}
 
 double Vehicle::getSpeed() const {
-    return fSpeed;
-}
-
-std::string Vehicle::getRoadName() const {
-    return fRoadName;
-}
-
-void Vehicle::update(double deltaT) {
-    double newSpeed = fSpeed + fAcceleration * deltaT;
-    if (newSpeed < 0) {
-        // Snelheid zou negatief worden => clip naar 0
-        if (std::abs(fAcceleration) > 1e-9) {
-            fPosition -= (fSpeed * fSpeed) / (2.0 * std::abs(fAcceleration));
-        }
-        fSpeed = 0.0;
-    } else {
-        fSpeed = newSpeed;
-        fPosition += fSpeed * deltaT + 0.5 * fAcceleration * deltaT * deltaT;
-    }
-}
-
-void Vehicle::updateAcceleration(const Vehicle* vehicleAhead) {
-    if (fCurrentVmax < 1e-9) {
-        fCurrentVmax = kVmax;
-    }
-
-    if (vehicleAhead) {
-        double deltaX = vehicleAhead->getPosition() - fPosition - kVehicleLength;
-        double deltaV = fSpeed - vehicleAhead->getSpeed();
-        double term   = fSpeed;
-        double denominator = std::max(deltaX, 0.1);
-        double delta = (kFmin + std::max(0.0, term + (fSpeed*deltaV)/(2.0*std::sqrt(kAmax*kBmax))))
-                       / denominator;
-
-        double speedRatio = fSpeed / fCurrentVmax;
-        fAcceleration = kAmax * (1 - std::pow(speedRatio, 4) - delta*delta);
-    } else {
-        // Geen voorligger => 'free road'
-        double speedRatio = fSpeed / fCurrentVmax;
-        fAcceleration = kAmax * (1 - std::pow(speedRatio, 4));
-    }
-}
-
-void Vehicle::stopImmediately() {
-    fSpeed = 0.0;
-    fAcceleration = 0.0;
-}
-
-void Vehicle::applyTemporarySpeedFactor(double factor) {
-    fCurrentVmax = kVmax * factor;
-    if (fSpeed > fCurrentVmax) {
-        double diff  = fSpeed - fCurrentVmax;
-        double ratio = diff / fSpeed;
-        fAcceleration = -std::abs(kBmax) * ratio;
-    }
-}
-
-void Vehicle::resetMaxSpeed() {
-    fCurrentVmax = kVmax;
+    return speed;
 }

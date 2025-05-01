@@ -1,31 +1,32 @@
-#ifndef INC_TRAFFICLIGHT_H
-#define INC_TRAFFICLIGHT_H
+#ifndef TRAFFICLIGHT_H
+#define TRAFFICLIGHT_H
 
 #include <string>
 
+class Road;
+
 class TrafficLight {
 public:
-    enum class State { Red, Green };
+    TrafficLight(Road* road, int position, int cycle);
 
-    TrafficLight(const std::string &roadName, double position, double cycle);
+    // Update the light status based on the current time
+    void update(double time);
 
-    // Ophalen
-    State getState() const;
+    // Get the status of the light (green or red)
+    std::string getStatus() const;
+
+    // Check if the light is green
     bool isGreen() const;
 
-    // Updaten
-    void update(double deltaT);
-
-    // Info
-    std::string getRoadName() const;
-    double getPosition() const;
+    // Get the position of the light on the road
+    int getPosition() const;
 
 private:
-    std::string fRoadName;
-    double fPosition;
-    double fCycle;
-    double fTimeSinceChange;
-    bool fGreen;
+    Road* road;            // Road the light belongs to
+    int position;          // Position of the traffic light on the road
+    int cycle;             // Cycle time for the green/red light switch
+    bool green;            // Whether the light is green
+    double lastSwitchTime; // Last time the light changed status
 };
 
-#endif // INC_TRAFFICLIGHT_H
+#endif // TRAFFICLIGHT_H

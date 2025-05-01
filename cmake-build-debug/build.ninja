@@ -55,8 +55,6 @@ build CMakeFiles/TrafficSimulator.dir/src/main.cpp.obj: CXX_COMPILER__TrafficSim
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulator.dir\
-  TARGET_PDB = TrafficSimulator.pdb
 
 build CMakeFiles/TrafficSimulator.dir/src/Simulation.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Simulation.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\Simulation.cpp.obj.d
@@ -64,8 +62,6 @@ build CMakeFiles/TrafficSimulator.dir/src/Simulation.cpp.obj: CXX_COMPILER__Traf
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulator.dir\
-  TARGET_PDB = TrafficSimulator.pdb
 
 build CMakeFiles/TrafficSimulator.dir/src/Road.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Road.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\Road.cpp.obj.d
@@ -73,8 +69,6 @@ build CMakeFiles/TrafficSimulator.dir/src/Road.cpp.obj: CXX_COMPILER__TrafficSim
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulator.dir\
-  TARGET_PDB = TrafficSimulator.pdb
 
 build CMakeFiles/TrafficSimulator.dir/src/Vehicle.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Vehicle.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\Vehicle.cpp.obj.d
@@ -82,8 +76,6 @@ build CMakeFiles/TrafficSimulator.dir/src/Vehicle.cpp.obj: CXX_COMPILER__Traffic
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulator.dir\
-  TARGET_PDB = TrafficSimulator.pdb
 
 build CMakeFiles/TrafficSimulator.dir/src/TrafficLight.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/TrafficLight.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\TrafficLight.cpp.obj.d
@@ -91,8 +83,6 @@ build CMakeFiles/TrafficSimulator.dir/src/TrafficLight.cpp.obj: CXX_COMPILER__Tr
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulator.dir\
-  TARGET_PDB = TrafficSimulator.pdb
 
 build CMakeFiles/TrafficSimulator.dir/src/VehicleGenerator.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/VehicleGenerator.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\VehicleGenerator.cpp.obj.d
@@ -100,8 +90,48 @@ build CMakeFiles/TrafficSimulator.dir/src/VehicleGenerator.cpp.obj: CXX_COMPILER
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulator.dir\
-  TARGET_PDB = TrafficSimulator.pdb
+
+build CMakeFiles/TrafficSimulator.dir/src/Parser.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Parser.cpp || cmake_object_order_depends_target_TrafficSimulator
+  DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\Parser.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
+
+build CMakeFiles/TrafficSimulator.dir/tests/tests.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tests/tests.cpp || cmake_object_order_depends_target_TrafficSimulator
+  DEP_FILE = CMakeFiles\TrafficSimulator.dir\tests\tests.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\tests
+
+build CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxml.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxml.cpp || cmake_object_order_depends_target_TrafficSimulator
+  DEP_FILE = CMakeFiles\TrafficSimulator.dir\tinyxml\tinyxml.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\tinyxml
+
+build CMakeFiles/TrafficSimulator.dir/tinyxml/tinystr.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinystr.cpp || cmake_object_order_depends_target_TrafficSimulator
+  DEP_FILE = CMakeFiles\TrafficSimulator.dir\tinyxml\tinystr.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\tinyxml
+
+build CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlerror.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxmlerror.cpp || cmake_object_order_depends_target_TrafficSimulator
+  DEP_FILE = CMakeFiles\TrafficSimulator.dir\tinyxml\tinyxmlerror.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\tinyxml
+
+build CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlparser.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxmlparser.cpp || cmake_object_order_depends_target_TrafficSimulator
+  DEP_FILE = CMakeFiles\TrafficSimulator.dir\tinyxml\tinyxmlparser.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\tinyxml
 
 
 # =============================================================================
@@ -111,16 +141,15 @@ build CMakeFiles/TrafficSimulator.dir/src/VehicleGenerator.cpp.obj: CXX_COMPILER
 #############################################
 # Link the executable TrafficSimulator.exe
 
-build TrafficSimulator.exe: CXX_EXECUTABLE_LINKER__TrafficSimulator_Debug CMakeFiles/TrafficSimulator.dir/src/main.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Simulation.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Road.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Vehicle.cpp.obj CMakeFiles/TrafficSimulator.dir/src/TrafficLight.cpp.obj CMakeFiles/TrafficSimulator.dir/src/VehicleGenerator.cpp.obj
+build TrafficSimulator.exe: CXX_EXECUTABLE_LINKER__TrafficSimulator_Debug CMakeFiles/TrafficSimulator.dir/src/main.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Simulation.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Road.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Vehicle.cpp.obj CMakeFiles/TrafficSimulator.dir/src/TrafficLight.cpp.obj CMakeFiles/TrafficSimulator.dir/src/VehicleGenerator.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Parser.cpp.obj CMakeFiles/TrafficSimulator.dir/tests/tests.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinystr.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlparser.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulator.dir\
   TARGET_FILE = TrafficSimulator.exe
   TARGET_IMPLIB = libTrafficSimulator.dll.a
-  TARGET_PDB = TrafficSimulator.pdb
+  TARGET_PDB = TrafficSimulator.exe.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target TrafficSimulatorTests
@@ -137,8 +166,6 @@ build CMakeFiles/TrafficSimulatorTests.dir/tests/tests.cpp.obj: CXX_COMPILER__Tr
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\tests
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulatorTests.dir\
-  TARGET_PDB = TrafficSimulatorTests.pdb
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/Simulation.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Simulation.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\Simulation.cpp.obj.d
@@ -146,8 +173,6 @@ build CMakeFiles/TrafficSimulatorTests.dir/src/Simulation.cpp.obj: CXX_COMPILER_
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulatorTests.dir\
-  TARGET_PDB = TrafficSimulatorTests.pdb
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/Road.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Road.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\Road.cpp.obj.d
@@ -155,8 +180,6 @@ build CMakeFiles/TrafficSimulatorTests.dir/src/Road.cpp.obj: CXX_COMPILER__Traff
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulatorTests.dir\
-  TARGET_PDB = TrafficSimulatorTests.pdb
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/Vehicle.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Vehicle.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\Vehicle.cpp.obj.d
@@ -164,8 +187,6 @@ build CMakeFiles/TrafficSimulatorTests.dir/src/Vehicle.cpp.obj: CXX_COMPILER__Tr
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulatorTests.dir\
-  TARGET_PDB = TrafficSimulatorTests.pdb
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/TrafficLight.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/TrafficLight.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\TrafficLight.cpp.obj.d
@@ -173,8 +194,6 @@ build CMakeFiles/TrafficSimulatorTests.dir/src/TrafficLight.cpp.obj: CXX_COMPILE
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulatorTests.dir\
-  TARGET_PDB = TrafficSimulatorTests.pdb
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/VehicleGenerator.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/VehicleGenerator.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\VehicleGenerator.cpp.obj.d
@@ -182,8 +201,41 @@ build CMakeFiles/TrafficSimulatorTests.dir/src/VehicleGenerator.cpp.obj: CXX_COM
   INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulatorTests.dir\
-  TARGET_PDB = TrafficSimulatorTests.pdb
+
+build CMakeFiles/TrafficSimulatorTests.dir/src/Parser.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Parser.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
+  DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\Parser.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
+
+build CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxml.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxml.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
+  DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\tinyxml\tinyxml.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\tinyxml
+
+build CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinystr.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinystr.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
+  DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\tinyxml\tinystr.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\tinyxml
+
+build CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxmlerror.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxmlerror.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
+  DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\tinyxml\tinyxmlerror.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\tinyxml
+
+build CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxmlparser.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxmlparser.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
+  DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\tinyxml\tinyxmlparser.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
+  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\tinyxml
 
 
 # =============================================================================
@@ -193,17 +245,16 @@ build CMakeFiles/TrafficSimulatorTests.dir/src/VehicleGenerator.cpp.obj: CXX_COM
 #############################################
 # Link the executable TrafficSimulatorTests.exe
 
-build TrafficSimulatorTests.exe: CXX_EXECUTABLE_LINKER__TrafficSimulatorTests_Debug CMakeFiles/TrafficSimulatorTests.dir/tests/tests.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Simulation.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Road.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Vehicle.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/TrafficLight.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/VehicleGenerator.cpp.obj
+build TrafficSimulatorTests.exe: CXX_EXECUTABLE_LINKER__TrafficSimulatorTests_Debug CMakeFiles/TrafficSimulatorTests.dir/tests/tests.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Simulation.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Road.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Vehicle.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/TrafficLight.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/VehicleGenerator.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Parser.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinystr.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxmlparser.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lgtest  -lgtest_main  -lpthread  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/youri/CLionProjects/TrafficSim/gtest/lib
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\TrafficSimulatorTests.dir\
   TARGET_FILE = TrafficSimulatorTests.exe
   TARGET_IMPLIB = libTrafficSimulatorTests.dll.a
-  TARGET_PDB = TrafficSimulatorTests.pdb
+  TARGET_PDB = TrafficSimulatorTests.exe.dbg
 
 
 #############################################
@@ -266,14 +317,14 @@ build all: phony TrafficSimulator.exe TrafficSimulatorTests.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystem.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Determine-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Users/youri/CLionProjects/TrafficSim/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Users/youri/CLionProjects/TrafficSim/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystem.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Determine-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Users/youri/CLionProjects/TrafficSim/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Users/youri/CLionProjects/TrafficSim/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake: phony
 
 
 #############################################

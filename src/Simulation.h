@@ -1,59 +1,52 @@
-#ifndef INC_SIMULATION_H
-#define INC_SIMULATION_H
+#ifndef SIMULATION_H
+#define SIMULATION_H
 
 #include <vector>
-#include <memory>
 #include <string>
-#include "Road.h"
-#include "Vehicle.h"
-#include "TrafficLight.h"
-#include "VehicleGenerator.h"
+
+class Road;
+class Vehicle;
+class TrafficLight;
+class VehicleGenerator;
 
 class Simulation {
 public:
+    // Constructor
     Simulation();
-    ~Simulation();
 
-    // Inlezen van bestand (Use-cases 1.1 / 1.2)
-    bool loadFromFile(const std::string& filename);
+    // Load simulation data from a file
+    void loadFromFile(const std::string& filename);
 
-    // 1 stap simulatie (handig in tests)
+    // Run one simulation step
     void runStep();
 
-    // Oude "loadScenario" (optioneel, kan leeg blijven)
-    void loadScenario(const std::string &filename);
-
-    // Hoofdloop
+    // Run the simulation for a set number of steps
     void run();
 
-    // Getters (const)
-    const std::vector<std::unique_ptr<Road>>& getRoads() const;
-    const std::vector<std::unique_ptr<Vehicle>>& getVehicles() const;
-    const std::vector<std::unique_ptr<TrafficLight>>& getTrafficLights() const;
+    // Output the current state of the simulation
+    void outputState() const;
 
-    // Toegevoegde methodes om items toe te voegen
-    void addRoad(std::unique_ptr<Road> road);
-    void addVehicle(std::unique_ptr<Vehicle> vehicle);
-    void addTrafficLight(std::unique_ptr<TrafficLight> light);
+    // Destructor
+    ~Simulation();
+
+    // Getters for roads, vehicles, and traffic lights
+    const std::vector<Road*>& getRoads() const;
+    const std::vector<Vehicle*>& getVehicles() const;
+    const std::vector<TrafficLight*>& getTrafficLights() const;
+
+    // Methods to add roads, vehicles, and traffic lights
+    void addRoad(Road* road);
+    void addVehicle(Vehicle* vehicle);
+    void addTrafficLight(TrafficLight* light);
 
 private:
-    std::vector<std::unique_ptr<Road>> fRoads;
-    std::vector<std::unique_ptr<Vehicle>> fVehicles;
-    std::vector<std::unique_ptr<TrafficLight>> fTrafficLights;
-    std::vector<std::unique_ptr<VehicleGenerator>> fGenerators;
-
-    double fSimTime;
-    const double kDeltaT = 0.0166;
-    const double kSimDuration = 10.0;
-
-    // Constants uit de behoefte­specificatie
-    static constexpr double kStopDistance     = 15.0;
-    static constexpr double kSlowDownDistance = 50.0;
-    static constexpr double kSlowFactor       = 0.4;
-
-    void update();
-    void outputState() const;
-    double getRoadLength(const std::string &roadName) const;
+    double currentTime;          // Current simulation time
+    int stepCounter;             // Counter for simulation steps
+    int vehicleCounter;          // Unique vehicle counter (for IDs)
+    std::vector<Road*> roads;    // List of roads
+    std::vector<Vehicle*> vehicles;    // List of vehicles
+    std::vector<TrafficLight*> trafficLights; // List of traffic lights
+    std::vector<VehicleGenerator*> generators; // Vehicle generators
 };
 
-#endif // INC_SIMULATION_H
+#endif // SIMULATION_H

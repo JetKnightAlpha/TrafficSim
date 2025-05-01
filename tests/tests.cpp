@@ -18,88 +18,74 @@
  *      waarden opleveren.
  */
 TEST(InputTest, RoadLoading) {
-    Road road("Testweg", 100.0);
+    Road road("Testweg", 100);  // Updated to match the constructor
     EXPECT_EQ(road.getName(), "Testweg");
-    EXPECT_DOUBLE_EQ(road.getLength(), 100.0);
+    EXPECT_EQ(road.getLength(), 100);  // Changed to int comparison
 }
 
 /**
  * Test 2: Controleer of een voertuig zonder voorligger
- *         naar voren versnelt (Use-case 3.1).
+ *         naar voren versnelt.
  *
- * - Context: Volgens het IDM-model of de basislogica in Vehicle.cpp
- *   krijgt een voertuig zonder voorligger een positieve acceleratie
- *   (tenzij het al op vmax zit, maar hier starten we op v=0).
+ * - Context: We willen testen of een voertuig zonder voorligger
+ *   (geen voertuigen ervoor) correct versnelt.
  * - Werking:
- *   1) We maken een Vehicle met startsnelheid 0.
- *   2) We roepen updateAcceleration(nullptr) aan (geen voorligger).
- *   3) Verwacht resultaat: getAcceleration() > 0.
+ *   1) We maken een voertuig zonder voorligger.
+ *   2) We verifiëren of het voertuig versnelt.
  */
 TEST(VehicleTest, AccelerationLogic_NoLeader) {
-    Vehicle vehicle(0.0);
-    vehicle.updateAcceleration(nullptr);
+    Road road("Testweg", 100);  // Create a road object
+    Vehicle vehicle(&road, 0.0);  // Pass Road pointer to Vehicle constructor
+    vehicle.update(0.0166);  // Assuming 1 frame update (deltaTime)
     EXPECT_GT(vehicle.getAcceleration(), 0.0)
         << "Voertuig zonder voorligger zou moeten versnellen (a>0).";
 }
 
 /**
- * Test 3: TrafficLight-omslag na cycle-verstrijken (Use-case 3.2).
+ * Test 3: TrafficLight-omslag na cycle-verstrijken.
  *
- * - Context: Een verkeerslicht begint op groen en na 'cycle' seconden
- *   hoort hij te flippen naar rood (of rood->groen).
+ * - Context: We willen testen of het verkeerslicht correct omschakelt
+ *   na de opgegeven cycle tijd.
  * - Werking:
- *   1) Maak een TrafficLight met cycle=20s.
- *   2) Roep update(25.0) aan (25 seconden).
- *   3) Na 25s is cycle (20s) gepasseerd, dus het licht zou moeten
- *      geflipt zijn naar rood.
+ *   1) We maken een verkeerslicht aan met een cycle tijd van 20 seconden.
+ *   2) We verifiëren of het verkeerslicht groen of rood is na 25 seconden.
  */
 TEST(TrafficLightTest, StateTransition) {
-    TrafficLight light("MainRoad", 50.0, 20.0);
+    Road road("MainRoad", 200);
+    TrafficLight light(&road, 50, 20);  // Pass Road pointer to TrafficLight constructor
     light.update(25.0);
-    EXPECT_EQ(light.getState(), TrafficLight::State::Red)
+    EXPECT_FALSE(light.isGreen())  // Should be red after 25 seconds
         << "Verkeerslicht zou na 25s rood moeten zijn.";
 }
 
 /**
- * Test 4: Inlezen uit 'scenario.txt' (Use-cases 1.1 / 1.2).
+ * Test 4: Inlezen uit 'scenario.txt'.
  *
- * - Context: We willen controleren of de loadFromFile(...) methode
- *   werkt met een (pseudo) scenario-bestand. Dit bestand moet minimaal
- *   een BAAN bevatten.
+ * - Context: We willen testen of het bestand correct wordt ingelezen
+ *   en de wegen worden geladen.
  * - Werking:
- *   1) We maken een Simulation-object.
- *   2) We roepen sim.loadFromFile("scenario.txt").
- *   3) We verwachten dat de methode 'true' teruggeeft (bestand gevonden).
- *   4) We verwachten minstens één road in sim.getRoads().
+ *   1) We laden het bestand "scenario.txt".
+ *   2) We verifiëren dat er wegen geladen zijn uit het bestand.
  */
 TEST(FileInputTest, LoadScenarioFile) {
     Simulation sim;
-    bool ok = sim.loadFromFile("scenario.txt");
-    EXPECT_TRUE(ok)
-        << "Kon 'scenario.txt' niet openen (check pad/Working Dir).";
+    sim.loadFromFile("scenario.txt");  // Adjusted to match Simulation API
     EXPECT_FALSE(sim.getRoads().empty())
         << "Verwacht minstens 1 BAAN in het bestand.";
 }
 
 /**
- * Test 5: VehicleGeneration (Use-case 3.4).
+ * Test 5: VehicleGeneration.
  *
- * - Context: Als er in het scenario een VOERTUIGGENERATOR staat met
- *   een bepaalde frequentie, dan verwachten we dat na voldoende tijd
- *   (langer dan die frequentie) nieuwe voertuigen gespawnd worden.
+ * - Context: We willen testen of voertuigen correct worden gegenereerd
+ *   volgens de opgegeven frequentie.
  * - Werking:
- *   1) We laden scenario.txt (waar bv. VOERTUIGGENERATOR Middelheimlaan 5
- *      in staat).
- *   2) We runnen ~400 keer runStep() => ~6.64s (400*0.0166).
- *   3) We checken of er sindsdien minstens 1 extra voertuig is verschenen
- *      t.o.v. de initieel ingelezen voertuigen.
- *   4) We doen dat hier simpelweg via: EXPECT_GE(count, 3u).
- *      (We gaan ervan uit dat we initieel 2 voertuigen hebben.)
+ *   1) We laden het scenario en voeren meerdere stappen uit.
+ *   2) We verifiëren of er voertuigen zijn gegenereerd.
  */
 TEST(SimulationTest, VehicleGeneration) {
     Simulation sim;
-    bool ok = sim.loadFromFile("scenario.txt");
-    ASSERT_TRUE(ok);
+    sim.loadFromFile("scenario.txt");  // Adjusted to match Simulation API
 
     for (int i = 0; i < 400; ++i) {
         sim.runStep();
@@ -110,110 +96,86 @@ TEST(SimulationTest, VehicleGeneration) {
 }
 
 /**
- * Test 6: Meerdere verkeerslichten op dezelfde weg (Use-case 3.2).
+ * Test 6: Meerdere verkeerslichten op dezelfde weg.
  *
- * - Context: We construeren een scenario in-memory (zonder bestand).
- *   We zetten twee verkeerslichten op één weg en kijken of de simulatie
- *   in elk geval niet crasht en het voertuig correct doorrijdt of stopt
- *   afhankelijk van de lichttoestand.
+ * - Context: We willen testen of meerdere verkeerslichten op dezelfde
+ *   weg correct worden toegevoegd.
  * - Werking:
- *   1) Maak Road("TestRoad", 200).
- *   2) Maak 2 TrafficLights (licht1 op pos=50, licht2 op pos=100),
- *      beide met cycle=9999 (ze flippen dus erg laat).
- *   3) Maak 1 Vehicle op pos=0.
- *   4) Run ~1000 steps => ~16.6s.
- *   5) Omdat de lichten nooit rood worden (9999s is extreem lang),
- *      moet het voertuig doorrijden en dus een positie > 50m halen.
+ *   1) We voegen twee verkeerslichten toe op dezelfde weg.
+ *   2) We verifiëren of beide lichten zijn toegevoegd.
  */
 TEST(SimulationTest, MultipleLightsSingleRoad) {
     Simulation sim;
 
-    auto road = std::make_unique<Road>("TestRoad", 200.0);
-    sim.addRoad(std::move(road));
+    Road road("TestRoad", 200);
+    sim.addRoad(&road);
 
-    auto light1 = std::make_unique<TrafficLight>("TestRoad", 50.0, 9999.0);
-    auto light2 = std::make_unique<TrafficLight>("TestRoad", 100.0, 9999.0);
-    sim.addTrafficLight(std::move(light1));
-    sim.addTrafficLight(std::move(light2));
+    TrafficLight light1(&road, 50, 9999);
+    TrafficLight light2(&road, 100, 9999);
+    sim.addTrafficLight(&light1);
+    sim.addTrafficLight(&light2);
 
-    auto v = std::make_unique<Vehicle>("TestRoad", 0.0);
-    sim.addVehicle(std::move(v));
+    Vehicle vehicle(&road, 0.0);
+    sim.addVehicle(&vehicle);
 
     for (int i = 0; i < 1000; ++i) {
         sim.runStep();
     }
 
-    double pos   = sim.getVehicles().at(0)->getPosition();
-    double speed = sim.getVehicles().at(0)->getSpeed();
+    double pos = vehicle.getPosition();
+    double speed = vehicle.getSpeed();
 
-    // Met default fGreen=true en cycle=9999 => nooit rood => doorrijden.
     EXPECT_GT(pos, 50.0)
         << "Licht is nooit rood => voertuig moet doorrijden.";
-    SUCCEED();
 }
 
 /**
- * Test 7: VehicleStopsAtRedLight (Use-case 3.2, stop-afstand).
+ * Test 7: VehicleStopsAtRedLight.
  *
- * - Context: We willen expliciet zien dat een voertuig stopt
- *   voor een rood licht binnen redLight -> vehicle range <= stopDistance.
+ * - Context: We willen testen of een voertuig stopt voor een rood
+ *   verkeerslicht.
  * - Werking:
- *   1) Road("StopRoad", 100).
- *   2) TrafficLight("StopRoad", 30.0, 1.0) => cycle=1s => na 1s flipt naar rood.
- *   3) Run ~60 steps => ~1s => licht is nu rood.
- *   4) Voeg Vehicle("StopRoad", 0.0) toe.
- *   5) Run nog 1500 steps => ~25s => het voertuig moet bij pos=30 stilstaan.
- *   6) We checken of pos <= 30.0 + 1e-9 en speed ~ 0.0
- *      Met marge=3e-2, omdat we in practise 0.0239 m/s wel als "stilstand" zien.
+ *   1) We voegen een verkeerslicht toe en wachten totdat het groen wordt.
+ *   2) We verifiëren of het voertuig stopt bij het rood licht.
  */
 TEST(SimulationTest, VehicleStopsAtRedLight) {
     Simulation sim;
 
-    // 1) Weg
-    auto road = std::make_unique<Road>("StopRoad", 100.0);
-    sim.addRoad(std::move(road));
+    Road road("StopRoad", 100);
+    sim.addRoad(&road);
 
-    // 2) Licht (flip naar rood na 1s)
-    auto light = std::make_unique<TrafficLight>("StopRoad", 30.0, 1.0);
-    sim.addTrafficLight(std::move(light));
+    TrafficLight light(&road, 30, 1);  // Cycle time = 1s
+    sim.addTrafficLight(&light);
 
-    // 3) ~1s simuleren => lamp rood
     for (int i = 0; i < 60; i++){
-        sim.runStep(); // ~1s (60 * 0.0166 ~ 0.996s)
+        sim.runStep();  // ~1s
     }
 
-    // 4) Voertuig spawnen
-    auto veh = std::make_unique<Vehicle>("StopRoad", 0.0);
-    sim.addVehicle(std::move(veh));
+    Vehicle vehicle(&road, 0.0);
+    sim.addVehicle(&vehicle);
 
-    // 5) ~25s simuleren => auto moet gaan stoppen
-    for (int i=0; i<1500; i++){
-        sim.runStep();
+    for (int i = 0; i < 1500; i++){
+        sim.runStep();  // ~25s
     }
 
-    double pos   = sim.getVehicles().at(0)->getPosition();
-    double speed = sim.getVehicles().at(0)->getSpeed();
+    double pos = vehicle.getPosition();
+    double speed = vehicle.getSpeed();
 
     EXPECT_LE(pos, 30.0 + 1e-9)
         << "Voertuig had moeten stoppen voor rood licht op 30m.";
 
-    // marge=3e-2 => speeds tot ~0.03 zijn "bijna 0"
     EXPECT_NEAR(speed, 0.0, 3e-2)
         << "Voertuig moet stil staan (ook als speed ~0.0239).";
 }
 
 /**
- * Test 8: InvalidRoadLength (Use-case 1.1 validatie).
+ * Test 8: InvalidRoadLength.
  *
- * - Context: Als het scenario een weg heeft met lengte=-50,
- *   moet de code dit overslaan of false retourneren.
+ * - Context: We willen testen of het inlezen van een weg met een
+ *   negatieve lengte correct wordt afgewezen.
  * - Werking:
- *   1) We schrijven "invalid_scenario.txt" met
- *      BAAN NegativeRoad -50 (invalid)
- *      VOERTUIG SomeRoad 10 (ook invalid, want SomeRoad bestaat niet).
- *   2) We roepen sim.loadFromFile("invalid_scenario.txt").
- *   3) We checken of de weg niet is toegevoegd (fRoads is empty).
- *   4) We verwijderen daarna de file.
+ *   1) We voegen een weg toe met een negatieve lengte (-50).
+ *   2) We verifiëren of de weg niet wordt toegevoegd.
  */
 TEST(FileInputTest, InvalidRoadLength) {
     {
@@ -222,8 +184,7 @@ TEST(FileInputTest, InvalidRoadLength) {
         ofs << "VOERTUIG SomeRoad 10\n";
     }
     Simulation sim;
-    bool ok = sim.loadFromFile("invalid_scenario.txt");
-    EXPECT_TRUE(ok);  // we gaan ervan uit dat loadFromFile() "true" teruggeeft en 'continue' bij invalid data
+    sim.loadFromFile("invalid_scenario.txt");  // Adjusted to match Simulation API
     EXPECT_TRUE(sim.getRoads().empty())
         << "Ongeldige weg (lengte=-50) zou niet toegevoegd mogen worden.";
 
@@ -231,43 +192,31 @@ TEST(FileInputTest, InvalidRoadLength) {
 }
 
 /**
- * De main voor GTest: start alle tests.
- */
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
-/**
- * Test X: TwoCloseTrafficLights
+ * Test 9: Twee verkeerslichten te dicht op elkaar.
  *
- * - Context: We willen niet dat er twee verkeerslichten zijn binnen 50m
- *   op dezelfde baan (Appendix A, consistentie-eis).
+ * - Context: We willen testen of het systeem twee verkeerslichten
+ *   correct afwijst als ze te dicht bij elkaar staan.
  * - Werking:
- *   1) We schrijven "close_lights.txt" met:
- *      BAAN MainRoad 200
- *      VERKEERSLICHT MainRoad 100 20
- *      VERKEERSLICHT MainRoad 130 25
- *   2) We roepen sim.loadFromFile("close_lights.txt") aan.
- *      Het tweede licht is 30m verwijderd van het eerste, wat < 50m is.
- *      => Het zou "Inconsistent: verkeerslicht ... zit binnen 50m" melden
- *         en het tweede licht NIET toevoegen.
- *   3) We controleren of er uiteindelijk maar 1 licht in sim.getTrafficLights() zit.
+ *   1) We voegen twee verkeerslichten toe die te dicht bij elkaar staan.
+ *   2) We verifiëren of het tweede verkeerslicht correct wordt afgewezen.
  */
 TEST(FileInputTest, TwoCloseTrafficLights) {
     {
         std::ofstream ofs("close_lights.txt");
         ofs << "BAAN MainRoad 200\n";
-        ofs << "VERKEERSLICHT MainRoad 100 20\n"; // Licht1
-        ofs << "VERKEERSLICHT MainRoad 130 25\n"; // Licht2 => 30m verschil => te dicht
+        ofs << "VERKEERSLICHT MainRoad 100 20\n";
+        ofs << "VERKEERSLICHT MainRoad 130 25\n";  // 30m apart => invalid
     }
     Simulation sim;
-    bool ok = sim.loadFromFile("close_lights.txt");
-    EXPECT_TRUE(ok);
-
-    // We verwachten dat slechts 1 licht is toegevoegd
+    sim.loadFromFile("close_lights.txt");  // Adjusted to match Simulation API
     EXPECT_EQ(sim.getTrafficLights().size(), 1u)
         << "Tweede verkeerslicht (op 130m) had niet toegevoegd mogen worden, "
         << "want <50m van het eerste (op 100m).";
 
     remove("close_lights.txt");
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

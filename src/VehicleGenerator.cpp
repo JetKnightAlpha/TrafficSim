@@ -1,24 +1,13 @@
 #include "VehicleGenerator.h"
+#include "Road.h"
+#include "Vehicle.h"
 
-VehicleGenerator::VehicleGenerator(const std::string &roadName, double frequency)
-    : fRoadName(roadName),
-      fFrequency(frequency),
-      fTimeSinceLast(0.0)
-{
-}
+VehicleGenerator::VehicleGenerator(Road* road, int frequency)
+    : road(road), frequency(frequency), lastGenerated(-frequency) {}
 
-void VehicleGenerator::update(double deltaT) {
-    fTimeSinceLast += deltaT;
-}
-
-bool VehicleGenerator::shouldGenerate() const {
-    return (fTimeSinceLast >= fFrequency);
-}
-
-void VehicleGenerator::resetTimer() {
-    fTimeSinceLast = 0.0;
-}
-
-std::string VehicleGenerator::getRoadName() const {
-    return fRoadName;
+void VehicleGenerator::update(double currentTime) {
+    if (currentTime - lastGenerated >= frequency) {
+        road->addVehicle(new Vehicle(road, 0));
+        lastGenerated = currentTime;
+    }
 }
