@@ -98,13 +98,6 @@ build CMakeFiles/TrafficSimulator.dir/src/Parser.cpp.obj: CXX_COMPILER__TrafficS
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
-build CMakeFiles/TrafficSimulator.dir/tests/tests.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tests/tests.cpp || cmake_object_order_depends_target_TrafficSimulator
-  DEP_FILE = CMakeFiles\TrafficSimulator.dir\tests\tests.cpp.obj.d
-  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
-  OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
-  OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\tests
-
 build CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxml.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxml.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\tinyxml\tinyxml.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
@@ -141,7 +134,7 @@ build CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlparser.cpp.obj: CXX_COMPILE
 #############################################
 # Link the executable TrafficSimulator.exe
 
-build TrafficSimulator.exe: CXX_EXECUTABLE_LINKER__TrafficSimulator_Debug CMakeFiles/TrafficSimulator.dir/src/main.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Simulation.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Road.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Vehicle.cpp.obj CMakeFiles/TrafficSimulator.dir/src/TrafficLight.cpp.obj CMakeFiles/TrafficSimulator.dir/src/VehicleGenerator.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Parser.cpp.obj CMakeFiles/TrafficSimulator.dir/tests/tests.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinystr.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlparser.cpp.obj
+build TrafficSimulator.exe: CXX_EXECUTABLE_LINKER__TrafficSimulator_Debug CMakeFiles/TrafficSimulator.dir/src/main.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Simulation.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Road.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Vehicle.cpp.obj CMakeFiles/TrafficSimulator.dir/src/TrafficLight.cpp.obj CMakeFiles/TrafficSimulator.dir/src/VehicleGenerator.cpp.obj CMakeFiles/TrafficSimulator.dir/src/Parser.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinystr.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlparser.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir

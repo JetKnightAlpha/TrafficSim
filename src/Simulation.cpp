@@ -5,6 +5,7 @@
 #include "TrafficLight.h"
 #include "VehicleGenerator.h"
 #include <iostream>
+#include <cmath>
 
 Simulation::Simulation()
     : currentTime(0), stepCounter(0), vehicleCounter(1) {
@@ -44,13 +45,15 @@ void Simulation::outputState() const {
 
     for (const Road* road : roads) {
         for (const Vehicle* vehicle : road->getVehicles()) {
+            int roundedPosition = static_cast<int>(std::round(vehicle->getPosition()));
+            double roundedSpeed = std::round(vehicle->getSpeed() * 10.0) / 10.0;
             std::cout << "Voertuig " << vehicleCounter
                       << std::endl
                       << "-> baan: " << road->getName()
                       << std::endl
-                      << "-> positie: " << vehicle->getPosition()
+                      << "-> positie: " << roundedPosition
                       << std::endl
-                      << "-> snelheid: " << vehicle->getSpeed()
+                      << "-> snelheid: " << roundedSpeed
                       << "\n" << std::endl ;
             vehicleCounter++;
         }

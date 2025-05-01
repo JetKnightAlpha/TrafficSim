@@ -13,7 +13,6 @@ add_executable(TrafficSimulator
         src/TrafficLight.cpp
         src/VehicleGenerator.cpp
         src/Parser.cpp
-        tests/tests.cpp
         tinyxml/tinyxml.cpp
         tinyxml/tinystr.cpp
         tinyxml/tinyxmlerror.cpp
