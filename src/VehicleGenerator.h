@@ -1,4 +1,3 @@
-// VehicleGenerator.h
 #ifndef VEHICLEGENERATOR_H
 #define VEHICLEGENERATOR_H
 
