@@ -1,4 +1,3 @@
-// main.cpp
 #include "Simulation.h"
 
 int main() {
