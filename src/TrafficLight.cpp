@@ -15,5 +15,5 @@ bool TrafficLight::isGreen() const { return green; }
 int TrafficLight::getPosition() const { return position; }
 
 std::string TrafficLight::getStatus() const {
-    return green ? "green" : "red"; // Return status as "green" or "red"
+    return green ? "green" : "red";
 }
