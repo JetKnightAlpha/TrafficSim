@@ -21,29 +21,25 @@ Vehicle::Vehicle(Road* road, double position)
 double Vehicle::getPosition() const { return position; }
 
 void Vehicle::calculateAcceleration() {
-    // Calculate acceleration based on the following distance and speed
     if (road->hasLeadingVehicle(this)) {
-        // Get the position and speed of the leading vehicle
         Vehicle* leading_vehicle = road->getLeadingVehicle(this);
         double delta_x = leading_vehicle->getPosition() - position - l;
         double delta_v = speed - leading_vehicle->getSpeed();
 
-        // Calculate interaction term δ
         double delta = F_MIN + std::max(0.0, (speed + delta_v) / (2 * std::sqrt(amax * bmax))) * delta_x;
         acceleration = amax * (1 - std::pow(speed / vmax, 4) - std::pow(delta, 2));
     } else {
-        // If no leading vehicle, vehicle accelerates freely
         acceleration = amax * (1 - std::pow(speed / vmax, 4));
     }
 }
 
 void Vehicle::update(double deltaTime) {
     if (speed + acceleration * deltaTime < 0) {
-        position -= (speed * speed) / (2 * acceleration);  // Adjust position if speed goes negative
-        speed = 0;  // Set speed to zero
+        position -= (speed * speed) / (2 * acceleration);
+        speed = 0;
     } else {
-        speed = std::min(speed + acceleration * deltaTime, vmax);  // Update speed
-        position += speed * deltaTime + (acceleration * deltaTime * deltaTime) / 2;  // Update position
+        speed = std::min(speed + acceleration * deltaTime, vmax);
+        position += speed * deltaTime + (acceleration * deltaTime * deltaTime) / 2;
     }
 }
 
@@ -51,7 +47,6 @@ void Vehicle::applyTrafficLightRules() {
     for (auto* light : road->getTrafficLights()) {
         if (!light->isGreen() && light->getPosition() > position &&
             light->getPosition() - position < xs0) {
-            // Smooth deceleration if near a red light
             double distanceToLight = light->getPosition() - position;
             acceleration = std::min(-bmax, -std::pow(distanceToLight / xs0, 2) * amax);
             }

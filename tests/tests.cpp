@@ -69,7 +69,7 @@ TEST(TrafficLightTest, StateTransition) {
  */
 TEST(FileInputTest, LoadScenarioFile) {
     Simulation sim;
-    sim.loadFromFile("scenario.txt");  // Adjusted to match Simulation API
+    sim.loadFromFile("../test_traffic_light.xml");  // Adjusted to match Simulation API
     EXPECT_FALSE(sim.getRoads().empty())
         << "Verwacht minstens 1 BAAN in het bestand.";
 }
