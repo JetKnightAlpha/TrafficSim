@@ -4,11 +4,15 @@
 #include "Vehicle.h"
 #include "TrafficLight.h"
 #include "VehicleGenerator.h"
+#include "BusStop.h"
+#include "Intersection.h"
 #include "../tinyxml/tinyxml.h"
 
 void Parser::parseFile(const std::string& filename,
                        std::vector<Road*>& roads,
-                       std::vector<VehicleGenerator*>& generators) {
+                       std::vector<VehicleGenerator*>& generators,
+                       std::vector<BusStop*>& busStops,
+                       std::vector<Intersection*>& intersections) {
     TiXmlDocument doc(filename.c_str());
     if (!doc.LoadFile()) {
         std::cerr << "Failed to load XML file: " << doc.ErrorDesc() << std::endl;
@@ -32,17 +36,50 @@ void Parser::parseFile(const std::string& filename,
         else if (tag == "VOERTUIG") {
             TiXmlElement* baanElement = elem->FirstChildElement("baan");
             TiXmlElement* posElement = elem->FirstChildElement("positie");
-            if (baanElement && posElement) {
+            TiXmlElement* typeElement = elem->FirstChildElement("type");
+            if (baanElement && posElement && typeElement) {
                 std::string baan = baanElement->GetText();
                 int pos = std::stoi(posElement->GetText());
+                std::string type = typeElement->GetText();
 
                 for (auto* r : roads) {
                     if (r->getName() == baan) {
-                        r->addVehicle(new Vehicle(r, pos));
+                        r->addVehicle(new Vehicle(r, pos, type));
                         break;
                     }
                 }
             }
+        }
+        else if (tag == "BUSHALTE") {
+            TiXmlElement* baanElement = elem->FirstChildElement("baan");
+            TiXmlElement* posElement = elem->FirstChildElement("positie");
+            TiXmlElement* wachttijdElement = elem->FirstChildElement("wachttijd");
+            if (baanElement && posElement && wachttijdElement) {
+                std::string baan = baanElement->GetText();
+                double pos = std::stod(posElement->GetText());
+                double wachttijd = std::stod(wachttijdElement->GetText());
+
+                for (auto* r : roads) {
+                    if (r->getName() == baan) {
+                        busStops.push_back(new BusStop(baan, pos, wachttijd));
+                        break;
+                    }
+                }
+            }
+        }
+        else if (tag == "KRUISPUNT") {
+            std::vector<Intersection::Entry> entries;
+            TiXmlElement* baanElement = elem->FirstChildElement("baan");
+            while (baanElement) {
+                TiXmlElement* posElement = baanElement->FirstChildElement("positie");
+                if (posElement) {
+                    std::string baan = baanElement->GetText();
+                    double pos = std::stod(posElement->GetText());
+                    entries.push_back(Intersection::Entry(baan, pos));
+                }
+                baanElement = baanElement->NextSiblingElement("baan");
+            }
+            intersections.push_back(new Intersection(entries));
         }
         else if (tag == "VERKEERSLICHT") {
             TiXmlElement* baanElement = elem->FirstChildElement("baan");
@@ -50,7 +87,7 @@ void Parser::parseFile(const std::string& filename,
             TiXmlElement* cyclusElement = elem->FirstChildElement("cyclus");
             if (baanElement && posElement && cyclusElement) {
                 std::string baan = baanElement->GetText();
-                int pos = std::stoi(posElement->GetText());
+                double pos = std::stod(posElement->GetText());
                 int cyclus = std::stoi(cyclusElement->GetText());
 
                 for (auto* r : roads) {
@@ -64,13 +101,15 @@ void Parser::parseFile(const std::string& filename,
         else if (tag == "VOERTUIGGENERATOR") {
             TiXmlElement* baanElement = elem->FirstChildElement("baan");
             TiXmlElement* freqElement = elem->FirstChildElement("frequentie");
-            if (baanElement && freqElement) {
+            TiXmlElement* typeElement = elem->FirstChildElement("type");
+            if (baanElement && freqElement && typeElement) {
                 std::string baan = baanElement->GetText();
                 int freq = std::stoi(freqElement->GetText());
+                std::string type = typeElement->GetText();
 
                 for (auto* r : roads) {
                     if (r->getName() == baan) {
-                        generators.push_back(new VehicleGenerator(r, freq));
+                        generators.push_back(new VehicleGenerator(r, freq, type));
                         break;
                     }
                 }

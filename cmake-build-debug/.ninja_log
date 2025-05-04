@@ -8,7 +8,7 @@
 20	1292	7680775344233996	CMakeFiles/TrafficSimulatorTests.dir/src/Road.cpp.obj	5ea908f190005040
 3538	5241	7680775379414779	TrafficSimulatorTests.exe	28a534ff06c78313
 21	119	7678318422352539	CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlerror.cpp.obj	2da6c0500948ade4
-41	631	7680716763116202	build.ninja	634e8ffab37cd581
+41	631	7680811915863184	build.ninja	634e8ffab37cd581
 123	1041	7639286475869313	CMakeFiles/run_tests	c390ec1697292284
 123	1041	7639286475869313	C:/Users/youri/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/run_tests	c390ec1697292284
 31	683	7678395846182823	CMakeFiles/TrafficSimulator.dir/src/TrafficLight.cpp.obj	fb61511110e0c67e
@@ -33,3 +33,17 @@
 5	677	7680766218860734	CMakeFiles/TrafficSimulator.dir/src/Intersection.cpp.obj	8898e672823af2b6
 1292	2196	7680775356950733	CMakeFiles/TrafficSimulatorTests.dir/src/GraphicsEngine.cpp.obj	9010debcf434475c
 1418	2517	7680775358210610	CMakeFiles/TrafficSimulatorTests.dir/src/Intersection.cpp.obj	101c6da15ac234bd
+66	1456	7680932599124718	CMakeFiles/TrafficSimulatorTests.dir/src/VehicleGenerator.cpp.obj	77bdc9f52bdf2663
+40	1729	7680932598858417	CMakeFiles/TrafficSimulatorTests.dir/src/Road.cpp.obj	5ea908f190005040
+51	1920	7680932598966580	CMakeFiles/TrafficSimulatorTests.dir/src/Vehicle.cpp.obj	fc984635dfb99cb
+27	2099	7680932598727468	CMakeFiles/TrafficSimulatorTests.dir/src/Simulation.cpp.obj	f2a175b96e459c22
+75	1020	7680932662699937	CMakeFiles/TrafficSimulator.dir/src/VehicleGenerator.cpp.obj	434670aca40c1387
+16	1111	7680932662114828	CMakeFiles/TrafficSimulator.dir/src/main.cpp.obj	1559f90a68383281
+46	1834	7680932662417322	CMakeFiles/TrafficSimulator.dir/src/Road.cpp.obj	c153a3e44e6d95ff
+1021	1911	7680932672170801	CMakeFiles/TrafficSimulator.dir/src/BusStop.cpp.obj	add00fe17c785d9b
+60	1922	7680932662555142	CMakeFiles/TrafficSimulator.dir/src/Vehicle.cpp.obj	e3e7ee1ca840e623
+32	2024	7680932662278560	CMakeFiles/TrafficSimulator.dir/src/Simulation.cpp.obj	7d66b98acc6d2ef9
+1111	2366	7680932673072565	CMakeFiles/TrafficSimulator.dir/src/GraphicsEngine.cpp.obj	582801caf0e8b6f
+46	1166	7680934776177210	CMakeFiles/TrafficSimulator.dir/src/Intersection.cpp.obj	8898e672823af2b6
+33	1288	7680934776052269	CMakeFiles/TrafficSimulator.dir/src/Parser.cpp.obj	681569b7b89e653d
+6	492	7680939732931806	TrafficSimulator.exe	47ebd75019f5b426
