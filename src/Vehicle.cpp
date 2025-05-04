@@ -1,6 +1,7 @@
 #include "Vehicle.h"
 #include "Road.h"
 #include "TrafficLight.h"
+#include "BusStop.h"
 #include <cmath>
 #include <algorithm>
 #include <unordered_map>
@@ -15,10 +16,6 @@ const double xs0  = 15;
 Vehicle::Vehicle(Road* road, double position, const std::string& type)
     : road(road), position(position), speed(0), acceleration(0), vmax(Vmax), type(type) {}
 
-double Vehicle::getPosition() const { return position; }
-double Vehicle::getSpeed() const { return speed; }
-const std::string& Vehicle::getType() const { return type; }
-double Vehicle::getAcceleration() const { return acceleration; }
 
 void Vehicle::calculateAcceleration() {
     if (road->hasLeadingVehicle(this)) {
@@ -51,6 +48,12 @@ void Vehicle::update(double deltaTime) {
         speed = std::min(speed + acceleration * deltaTime, vmax);
         position += speed * deltaTime + 0.5 * acceleration * deltaTime * deltaTime;
     }
+
+    double roadLength = road->getLength();
+    if (position > roadLength) {
+        position = 0;
+        speed = 0;
+    }
 }
 
 bool Vehicle::shouldWaitAt(double stopPos, double waitDuration) {
@@ -66,4 +69,21 @@ bool Vehicle::shouldWaitAt(double stopPos, double waitDuration) {
         waitTimers[stopPos] = 0;
     }
     return false;
+}
+
+double Vehicle::getPosition() const { return position; }
+double Vehicle::getSpeed() const { return speed; }
+const std::string& Vehicle::getType() const { return type; }
+double Vehicle::getAcceleration() const { return acceleration; }
+
+void Vehicle::setRoad(Road* r) {
+    road = r;
+}
+
+void Vehicle::setPosition(double newPosition) {
+    position = newPosition;
+}
+
+void Vehicle::setSpeed(double newSpeed) {
+    speed = newSpeed;
 }

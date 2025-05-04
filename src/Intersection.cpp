@@ -1,35 +1,47 @@
 #include "Intersection.h"
 #include "Vehicle.h"
 #include "Road.h"
+#include <iostream>
 #include <random>
-#include <cmath>
 
-Intersection::Intersection(const std::vector<Entry>& entries)
-    : fEntries(entries) {}
-
-bool Intersection::isOn(const Vehicle& v) const {
-    for (const auto& entry : fEntries) {
-        if (entry.first == v.getRoad()->getName() &&
-            std::fabs(entry.second - v.getPosition()) < 0.05) {
-            return true;
-            }
-    }
-    return false;
+Intersection::Intersection(const std::vector<EntryExit>& entryExits)
+    : entryExits(entryExits) {
 }
 
-std::optional<Intersection::Entry> Intersection::getNextRoad(const std::string& currentRoad) const {
-    if (fEntries.size() < 2) return std::nullopt;
+bool Intersection::isOn(const Vehicle& v) const {
+    return std::abs(v.getPosition() - entryExits[0].entryPosition) < 1.0;
+}
 
-    std::vector<Entry> options;
-    for (const auto& entry : fEntries) {
-        if (entry.first != currentRoad) {
-            options.push_back(entry);
+void Intersection::setRoads(const std::vector<Road*>& allRoads) {
+    roads = allRoads;
+}
+
+void Intersection::handleRoadSwitch(Vehicle& vehicle) {
+    Road* currentRoad = const_cast<Road*>(vehicle.getRoad());
+
+    if (currentRoad) {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(0, 1);
+
+        int decision = dis(gen);
+
+        if (decision == 1) {
+            for (const auto& entryExit : entryExits) {
+                if (currentRoad->getName() == entryExit.entryRoad) {
+                    Road * newRoad = Road::getRoadByName(entryExit.exitRoad, roads);
+
+                    if (newRoad) {
+                        vehicle.setRoad(newRoad);
+                        vehicle.setSpeed(0);
+                        vehicle.setPosition(entryExit.exitPosition);
+                        break;
+                    }
+                } else {
+                    vehicle.setPosition(vehicle.getPosition());
+                    vehicle.setSpeed(vehicle.getSpeed());
+                }
+            }
         }
     }
-
-    if (options.empty()) return std::nullopt;
-
-    static std::mt19937 rng(std::random_device{}());
-    std::uniform_int_distribution<> dist(0, options.size() - 1);
-    return options[dist(rng)];
 }

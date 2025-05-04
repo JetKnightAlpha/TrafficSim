@@ -3,6 +3,7 @@
 
 #include <string>
 class Road;
+class BusStop;
 
 class Vehicle {
 public:
@@ -18,11 +19,14 @@ public:
     void calculateAcceleration();
     void update(double deltaTime);
     void applyTrafficLightRules();
-    void setRoad(Road* r) { road = r; }
+    void setRoad(Road* r);
+    void setPosition(double newPosition);
+    void setSpeed(double newSpeed);
 
     bool shouldWaitAt(double stopPos, double waitDuration);
 
 private:
+    BusStop * bus;
     Road* road;
     double position;
     double speed;

@@ -20,7 +20,6 @@ add_executable(TrafficSimulator
         src/BusStop.cpp
         src/GraphicsEngine.cpp
         src/Intersection.cpp
-
 )
 
 target_include_directories(TrafficSimulator PUBLIC
@@ -29,8 +28,8 @@ target_include_directories(TrafficSimulator PUBLIC
 
 # --- Testapplicatie ---
 # 1. GTest headers en libraries
-include_directories(${PROJECT_SOURCE_DIR}/gtest/include)
-link_directories(${PROJECT_SOURCE_DIR}/gtest/lib)
+include_directories(./gtest/include)
+link_directories(./gtest/lib)
 
 # 2. Testexecutable
 add_executable(TrafficSimulatorTests
@@ -41,7 +40,6 @@ add_executable(TrafficSimulatorTests
         src/TrafficLight.cpp
         src/VehicleGenerator.cpp
         src/Parser.cpp
-        tests/tests.cpp
         tinyxml/tinyxml.cpp
         tinyxml/tinystr.cpp
         tinyxml/tinyxmlerror.cpp

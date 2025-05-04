@@ -14,26 +14,25 @@ class Intersection;
 class Simulation {
 public:
     Simulation();
+    ~Simulation();
 
     void loadFromFile(const std::string& filename);
-    void runStep();
     void run();
     void outputState() const;
-
-    ~Simulation();
+    void addRoad(Road* road);
+    void addTrafficLight(TrafficLight* light);
+    void addVehicle(Vehicle* vehicle);
 
     const std::vector<Road*>& getRoads() const;
     const std::vector<Vehicle*>& getVehicles() const;
     const std::vector<TrafficLight*>& getTrafficLights() const;
 
-    void addRoad(Road* road);
-    void addVehicle(Vehicle* vehicle);
-    void addTrafficLight(TrafficLight* light);
-
 private:
-    double currentTime;
-    int stepCounter;
-    int vehicleCounter;
+    void runStep();
+    void processVehicles();
+    void processTrafficLights();
+    void processGenerators();
+
     std::vector<Road*> roads;
     std::vector<Vehicle*> vehicles;
     std::vector<TrafficLight*> trafficLights;
@@ -41,6 +40,9 @@ private:
     std::vector<BusStop*> busStops;
     std::vector<Intersection*> intersections;
 
+    double currentTime;
+    int stepCounter;
+    int vehicleCounter;
 };
 
-#endif // SIMULATION_H
+#endif

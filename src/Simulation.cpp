@@ -21,32 +21,34 @@ void Simulation::runStep() {
     for (auto* road : roads) {
         for (auto* vehicle : road->getVehicles()) {
             if (vehicle == nullptr) continue;
+
             vehicle->calculateAcceleration();
             vehicle->applyTrafficLightRules();
-            vehicle->update(0.0166);
 
+            bool isWaiting = false;
             for (auto* busStop : busStops) {
-                if (vehicle->getRoad()->getName() == busStop->getRoadName() &&
-                    std::fabs(vehicle->getPosition() - busStop->getPosition()) < 5) {
-                    vehicle->applyTrafficLightRules();
-                    vehicle->update(0);
+                if (busStop->getRoadName() == road->getName() && std::abs(vehicle->getPosition() - busStop->getPosition()) < 1.0) {
+                    isWaiting = vehicle->shouldWaitAt(busStop->getPosition(), busStop->getWaitTime());
+                    break;
                 }
             }
 
+            if (!isWaiting) {
+                vehicle->update(0.0166);
+            }
+
+            double roadLength = road->getLength();
+            if (vehicle->getPosition() >= roadLength) {
+                vehicle->setPosition(roadLength);
+                vehicle->setSpeed(0);
+            }
             for (auto* intersection : intersections) {
                 if (intersection->isOn(*vehicle)) {
-                    auto nextRoad = intersection->getNextRoad(vehicle->getRoad()->getName());
-                    if (nextRoad) {
-                        const_cast<Road*>(vehicle->getRoad())->removeVehicle(vehicle);
-                        Road* nextRoadPtr = Road::getRoadByName(nextRoad->first, roads);
-                        if (nextRoadPtr) {
-                            nextRoadPtr->addVehicle(vehicle);
-                            vehicle->setRoad(nextRoadPtr);
-                            vehicle->update(0);
-                        }
-                    }
+                    intersection->handleRoadSwitch(*vehicle);
+                    break;
                 }
             }
+
         }
     }
 
@@ -64,8 +66,9 @@ void Simulation::runStep() {
     stepCounter++;
 }
 
+
 void Simulation::run() {
-    for (int i = 0; i < 1000; ++i) {
+    for (int i = 0; i < 1000000; ++i) {
         runStep();
         outputState();
     }
@@ -74,7 +77,8 @@ void Simulation::run() {
 void Simulation::outputState() const {
     int vehicleCounter = 1;
 
-    std::cout << "Tijd: " << stepCounter << std::endl;
+    std::cout << "Increment: " << stepCounter << std::endl;
+    std::cout << "Tijd: " << currentTime << std::endl;
 
     for (const Road* road : roads) {
         if (road->getVehicles().size() == 0) {

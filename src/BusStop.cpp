@@ -1,4 +1,5 @@
 #include "BusStop.h"
+#include "Vehicle.h"
 
 BusStop::BusStop(const std::string& roadName, double position, double waitTime)
     : roadName(roadName), position(position), waitTimeSeconds(waitTime) {}

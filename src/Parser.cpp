@@ -95,19 +95,30 @@ void Parser::parseFile(const std::string& filename,
             }
         }
         else if (tag == "KRUISPUNT") {
-            std::vector<Intersection::Entry> entries;
+            std::vector<Intersection::EntryExit> entryExits;
+            std::vector<std::pair<std::string, double>> temp;
             TiXmlElement* baanElement = elem->FirstChildElement("baan");
             while (baanElement) {
-                TiXmlElement* posElement = baanElement->FirstChildElement("positie");
-                if (posElement) {
-                    std::string baan = baanElement->GetText();
-                    double pos = std::stod(posElement->GetText());
-                    entries.push_back(Intersection::Entry(baan, pos));
+                const char* posAttr = baanElement->Attribute("positie");
+                const char* roadName = baanElement->GetText();
+
+                if (posAttr && roadName) {
+                    double pos = std::stod(posAttr);
+                    temp.emplace_back(roadName, pos);
                 }
                 baanElement = baanElement->NextSiblingElement("baan");
             }
-            intersections.push_back(new Intersection(entries));
+            if (temp.size() == 2) {
+                entryExits.emplace_back(
+                    temp[0].first, temp[0].second,
+                    temp[1].first, temp[1].second
+                );
+            }
+            if (!entryExits.empty()) {
+                intersections.push_back(new Intersection(entryExits));
+            }
         }
+
         else if (tag == "VERKEERSLICHT") {
             TiXmlElement* baanElement = elem->FirstChildElement("baan");
             TiXmlElement* posElement = elem->FirstChildElement("positie");

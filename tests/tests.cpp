@@ -3,16 +3,17 @@
 #include <filesystem>
 
 namespace fs = std::filesystem;
-static const fs::path RES =
-        fs::path(PROJECT_SOURCE_DIR) / "tests" / "test_files";
+const fs::path RES = fs::path("..") / "tests" / "test_files";
 
-/* ------------------------------------------------------------------ */
-/*  Hulproutine                                                       */
-/* ------------------------------------------------------------------ */
 static bool loadOK(const std::string& file)
 {
     Simulation sim;
-    return sim.loadFromFile( (RES / file).string() );
+    try {
+        sim.loadFromFile((RES / file).string());
+        return true;
+    } catch (...) {
+        return false;
+    }
 }
 
 /* ------------------------------------------------------------------ */

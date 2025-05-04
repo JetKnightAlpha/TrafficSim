@@ -10,22 +10,21 @@
     <naam>Beukenlaan</naam>
     <lengte>1000</lengte>
 </BAAN>
-<BAAN>
-    <naam>Hoofdstraat</naam>
-    <lengte>200</lengte>
-</BAAN>
 <KRUISPUNT>
     <baan positie="250">Middelheimlaan</baan>
     <baan positie="500">Floralienlaan</baan>
 </KRUISPUNT>
 <KRUISPUNT>
-    <baan positie="500">Middelheimlaan</baan>
     <baan positie="500">Beukenlaan</baan>
+    <baan positie="500">Middelheimlaan</baan>
+</KRUISPUNT>
+<KRUISPUNT>
+    <baan positie="500">Floralienlaan</baan>
+    <baan positie="250">Beukenlaan</baan>
 </KRUISPUNT>
 <VOERTUIGGENERATOR>
     <baan>Middelheimlaan</baan>
     <frequentie>5</frequentie>
-    <type>auto</type>
 </VOERTUIGGENERATOR>
 <VOERTUIG>
     <baan>Middelheimlaan</baan>

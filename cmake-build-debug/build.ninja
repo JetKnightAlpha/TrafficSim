@@ -52,98 +52,98 @@ build cmake_object_order_depends_target_TrafficSimulator: phony || .
 build CMakeFiles/TrafficSimulator.dir/src/main.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/main.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\main.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
 build CMakeFiles/TrafficSimulator.dir/src/Simulation.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Simulation.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\Simulation.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
 build CMakeFiles/TrafficSimulator.dir/src/Road.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Road.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\Road.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
 build CMakeFiles/TrafficSimulator.dir/src/Vehicle.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Vehicle.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\Vehicle.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
 build CMakeFiles/TrafficSimulator.dir/src/TrafficLight.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/TrafficLight.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\TrafficLight.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
 build CMakeFiles/TrafficSimulator.dir/src/VehicleGenerator.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/VehicleGenerator.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\VehicleGenerator.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
 build CMakeFiles/TrafficSimulator.dir/src/Parser.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Parser.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\Parser.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
 build CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxml.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxml.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\tinyxml\tinyxml.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\tinyxml
 
 build CMakeFiles/TrafficSimulator.dir/tinyxml/tinystr.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinystr.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\tinyxml\tinystr.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\tinyxml
 
 build CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlerror.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxmlerror.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\tinyxml\tinyxmlerror.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\tinyxml
 
 build CMakeFiles/TrafficSimulator.dir/tinyxml/tinyxmlparser.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxmlparser.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\tinyxml\tinyxmlparser.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\tinyxml
 
 build CMakeFiles/TrafficSimulator.dir/src/BusStop.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/BusStop.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\BusStop.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
 build CMakeFiles/TrafficSimulator.dir/src/GraphicsEngine.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/GraphicsEngine.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\GraphicsEngine.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
 build CMakeFiles/TrafficSimulator.dir/src/Intersection.cpp.obj: CXX_COMPILER__TrafficSimulator_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Intersection.cpp || cmake_object_order_depends_target_TrafficSimulator
   DEP_FILE = CMakeFiles\TrafficSimulator.dir\src\Intersection.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/src -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include
   OBJECT_DIR = CMakeFiles\TrafficSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulator.dir\src
 
@@ -177,98 +177,98 @@ build cmake_object_order_depends_target_TrafficSimulatorTests: phony || .
 build CMakeFiles/TrafficSimulatorTests.dir/tests/tests.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tests/tests.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\tests\tests.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\tests
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/Simulation.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Simulation.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\Simulation.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/Road.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Road.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\Road.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/Vehicle.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Vehicle.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\Vehicle.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/TrafficLight.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/TrafficLight.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\TrafficLight.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/VehicleGenerator.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/VehicleGenerator.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\VehicleGenerator.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/Parser.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Parser.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\Parser.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
 
 build CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxml.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxml.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\tinyxml\tinyxml.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\tinyxml
 
 build CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinystr.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinystr.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\tinyxml\tinystr.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\tinyxml
 
 build CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxmlerror.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxmlerror.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\tinyxml\tinyxmlerror.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\tinyxml
 
 build CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxmlparser.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/tinyxml/tinyxmlparser.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\tinyxml\tinyxmlparser.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\tinyxml
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/BusStop.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/BusStop.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\BusStop.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/GraphicsEngine.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/GraphicsEngine.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\GraphicsEngine.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
 
 build CMakeFiles/TrafficSimulatorTests.dir/src/Intersection.cpp.obj: CXX_COMPILER__TrafficSimulatorTests_unscanned_Debug C$:/Users/youri/CLionProjects/TrafficSim/src/Intersection.cpp || cmake_object_order_depends_target_TrafficSimulatorTests
   DEP_FILE = CMakeFiles\TrafficSimulatorTests.dir\src\Intersection.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
+  INCLUDES = -IC:/Users/youri/CLionProjects/TrafficSim/./gtest/include -IC:/Users/youri/CLionProjects/TrafficSim/src
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   OBJECT_FILE_DIR = CMakeFiles\TrafficSimulatorTests.dir\src
 
@@ -283,7 +283,7 @@ build CMakeFiles/TrafficSimulatorTests.dir/src/Intersection.cpp.obj: CXX_COMPILE
 build TrafficSimulatorTests.exe: CXX_EXECUTABLE_LINKER__TrafficSimulatorTests_Debug CMakeFiles/TrafficSimulatorTests.dir/tests/tests.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Simulation.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Road.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Vehicle.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/TrafficLight.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/VehicleGenerator.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Parser.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinystr.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/tinyxml/tinyxmlparser.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/BusStop.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/GraphicsEngine.cpp.obj CMakeFiles/TrafficSimulatorTests.dir/src/Intersection.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lgtest  -lgtest_main  -lpthread  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  LINK_PATH = -LC:/Users/youri/CLionProjects/TrafficSim/gtest/lib
+  LINK_PATH = -LC:/Users/youri/CLionProjects/TrafficSim/./gtest/lib
   OBJECT_DIR = CMakeFiles\TrafficSimulatorTests.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
