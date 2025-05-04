@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include "Parser.h"
 #include "Road.h"
 #include "Vehicle.h"
@@ -13,13 +15,30 @@ void Parser::parseFile(const std::string& filename,
                        std::vector<VehicleGenerator*>& generators,
                        std::vector<BusStop*>& busStops,
                        std::vector<Intersection*>& intersections) {
-    TiXmlDocument doc(filename.c_str());
-    if (!doc.LoadFile()) {
-        std::cerr << "Failed to load XML file: " << doc.ErrorDesc() << std::endl;
+    std::ifstream file(filename);
+    if (!file) {
+        std::cerr << "Failed to open XML file: " << filename << std::endl;
         return;
     }
 
-    TiXmlElement* elem = doc.FirstChildElement();
+    std::stringstream buffer;
+    buffer << "<ROOT>";
+    buffer << file.rdbuf();
+    buffer << "</ROOT>";
+
+    TiXmlDocument doc;
+    doc.Parse(buffer.str().c_str());
+
+    if (doc.Error()) {
+        std::cerr << "Failed to parse XML: " << doc.ErrorDesc() << std::endl;
+        return;
+    }
+
+    TiXmlElement* elem = doc.FirstChildElement("ROOT")->FirstChildElement();
+    if (!elem) {
+        std::cerr << "No root elements found!" << std::endl;
+        return;
+    }
 
     while (elem) {
         std::string tag = elem->Value();
@@ -42,12 +61,20 @@ void Parser::parseFile(const std::string& filename,
                 int pos = std::stoi(posElement->GetText());
                 std::string type = typeElement->GetText();
 
+                // Check if the road exists, create it if not
+                Road* road = nullptr;
                 for (auto* r : roads) {
                     if (r->getName() == baan) {
-                        r->addVehicle(new Vehicle(r, pos, type));
+                        road = r;
                         break;
                     }
                 }
+                if (!road) {
+                    road = new Road(baan, 1000); // Default length if road doesn't exist
+                    roads.push_back(road);
+                }
+
+                road->addVehicle(new Vehicle(road, pos, type));
             }
         }
         else if (tag == "BUSHALTE") {

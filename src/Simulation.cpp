@@ -20,6 +20,7 @@ void Simulation::loadFromFile(const std::string& filename) {
 void Simulation::runStep() {
     for (auto* road : roads) {
         for (auto* vehicle : road->getVehicles()) {
+            if (vehicle == nullptr) continue;
             vehicle->calculateAcceleration();
             vehicle->applyTrafficLightRules();
             vehicle->update(0.0166);
@@ -37,9 +38,10 @@ void Simulation::runStep() {
                     auto nextRoad = intersection->getNextRoad(vehicle->getRoad()->getName());
                     if (nextRoad) {
                         const_cast<Road*>(vehicle->getRoad())->removeVehicle(vehicle);
-                        Road* nextRoadPtr = Road::getRoadByName(nextRoad->first, roads); // Use getRoadByName here
+                        Road* nextRoadPtr = Road::getRoadByName(nextRoad->first, roads);
                         if (nextRoadPtr) {
                             nextRoadPtr->addVehicle(vehicle);
+                            vehicle->setRoad(nextRoadPtr);
                             vehicle->update(0);
                         }
                     }
@@ -75,6 +77,7 @@ void Simulation::outputState() const {
     std::cout << "Tijd: " << stepCounter << std::endl;
 
     for (const Road* road : roads) {
+        std::cout << "Baan: " << road->getName() << " heeft " << road->getVehicles().size() << " voertuigen" << std::endl;
         for (const Vehicle* vehicle : road->getVehicles()) {
             int roundedPosition = static_cast<int>(std::round(vehicle->getPosition()));
             double roundedSpeed = std::round(vehicle->getSpeed() * 10.0) / 10.0;
@@ -87,7 +90,7 @@ void Simulation::outputState() const {
                       << "-> positie: " << roundedPosition
                       << std::endl
                       << "-> snelheid: " << roundedSpeed
-                      << "\n" << std::endl ;
+                      << "\n" << std::endl;
             vehicleCounter++;
         }
 
@@ -112,6 +115,14 @@ Simulation::~Simulation() {
 
     for (auto* gen : generators) {
         delete gen;
+    }
+
+    for (auto* busStop : busStops) {
+        delete busStop;
+    }
+
+    for (auto* intersection : intersections) {
+        delete intersection;
     }
 }
 
