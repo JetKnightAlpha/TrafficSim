@@ -1,0 +1,6 @@
+<BAAN> A 300 </BAAN>
+<BAAN> B 300 </BAAN>
+<KRUISPUNT>
+  <baan positie="150">A</baan>
+  <baan positie="150">B</baan>
+</KRUISPUNT>
