@@ -4,6 +4,8 @@
 #include "Vehicle.h"
 #include "TrafficLight.h"
 #include "VehicleGenerator.h"
+#include "BusStop.h"
+#include "Intersection.h"
 #include <iostream>
 #include <cmath>
 
@@ -12,20 +14,49 @@ Simulation::Simulation()
 }
 
 void Simulation::loadFromFile(const std::string& filename) {
-    Parser::parseFile(filename, roads, generators);
+    Parser::parseFile(filename, roads, generators, busStops, intersections);
 }
 
 void Simulation::runStep() {
-    for (auto* road : roads)
-        for (auto* vehicle : road->getVehicles())
-            vehicle->calculateAcceleration(), vehicle->update(0.0166);
+    for (auto* road : roads) {
+        for (auto* vehicle : road->getVehicles()) {
+            vehicle->calculateAcceleration();
+            vehicle->applyTrafficLightRules();
+            vehicle->update(0.0166);
 
-    for (auto* road : roads)
-        for (auto* light : road->getTrafficLights())
+            for (auto* busStop : busStops) {
+                if (vehicle->getRoad()->getName() == busStop->getRoadName() &&
+                    std::fabs(vehicle->getPosition() - busStop->getPosition()) < 5) {
+                    vehicle->applyTrafficLightRules();
+                    vehicle->update(0);
+                }
+            }
+
+            for (auto* intersection : intersections) {
+                if (intersection->isOn(*vehicle)) {
+                    auto nextRoad = intersection->getNextRoad(vehicle->getRoad()->getName());
+                    if (nextRoad) {
+                        const_cast<Road*>(vehicle->getRoad())->removeVehicle(vehicle);
+                        Road* nextRoadPtr = Road::getRoadByName(nextRoad->first, roads); // Use getRoadByName here
+                        if (nextRoadPtr) {
+                            nextRoadPtr->addVehicle(vehicle);
+                            vehicle->update(0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    for (auto* road : roads) {
+        for (auto* light : road->getTrafficLights()) {
             light->update(currentTime);
+        }
+    }
 
-    for (auto* generator : generators)
+    for (auto* generator : generators) {
         generator->update(currentTime);
+    }
 
     currentTime += 0.0166;
     stepCounter++;
@@ -48,6 +79,8 @@ void Simulation::outputState() const {
             int roundedPosition = static_cast<int>(std::round(vehicle->getPosition()));
             double roundedSpeed = std::round(vehicle->getSpeed() * 10.0) / 10.0;
             std::cout << "Voertuig " << vehicleCounter
+                      << std::endl
+                      << "-> type: " << vehicle->getType()
                       << std::endl
                       << "-> baan: " << road->getName()
                       << std::endl

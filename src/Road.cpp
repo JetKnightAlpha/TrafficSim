@@ -2,14 +2,17 @@
 #include "Vehicle.h"
 #include "TrafficLight.h"
 #include <limits>
-
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 Road::Road(const std::string& name, int length) {
     this->name = name;
-    this->length = std::max(length, 100);  // Ensure minimum road length is reasonable
+    this->length = std::max(length, 100);
 }
 
 const std::string& Road::getName() const { return name; }
+
 int Road::getLength() const { return length; }
 
 void Road::addVehicle(Vehicle* vehicle) {
@@ -21,6 +24,7 @@ void Road::addTrafficLight(TrafficLight* light) {
 }
 
 const std::vector<Vehicle*>& Road::getVehicles() const { return vehicles; }
+
 const std::vector<TrafficLight*>& Road::getTrafficLights() const { return lights; }
 
 bool Road::hasLeadingVehicle(const Vehicle* vehicle) const {
@@ -43,4 +47,20 @@ Vehicle* Road::getLeadingVehicle(const Vehicle* vehicle) const {
         }
     }
     return closest;
+}
+
+void Road::removeVehicle(Vehicle* vehicle) {
+    auto it = std::find(vehicles.begin(), vehicles.end(), vehicle);
+    if (it != vehicles.end()) {
+        vehicles.erase(it);
+    }
+}
+
+Road* Road::getRoadByName(const std::string& roadName, const std::vector<Road*>& roads) {
+    for (auto* road : roads) {
+        if (road->getName() == roadName) {
+            return road;
+        }
+    }
+    return nullptr;
 }

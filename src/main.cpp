@@ -2,7 +2,7 @@
 
 int main() {
     Simulation sim;
-    sim.loadFromFile("../tests/test_files/test_traffic_light.xml");
+    sim.loadFromFile("../tests/test_files/test_type.xml");
     sim.run();
     return 0;
 }

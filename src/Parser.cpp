@@ -4,6 +4,7 @@
 #include "Vehicle.h"
 #include "TrafficLight.h"
 #include "VehicleGenerator.h"
+#include "../tinyxml/tinyxml.h"
 
 void Parser::parseFile(const std::string& filename,
                        std::vector<Road*>& roads,

@@ -1,40 +1,34 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
+#include <string>
 class Road;
 
 class Vehicle {
 public:
-    Vehicle(Road* road, double position);
+    Vehicle(Road* road, double position, const std::string& type);
 
-    void update(double deltaTime);
-
-    void calculateAcceleration();
-
-    void applyTrafficLightRules();
+    const Road* getRoad() const { return road; }
+    const std::string& getType() const;
 
     double getPosition() const;
-
     double getSpeed() const;
+    double getAcceleration() const;
 
-    double getAcceleration() const { return acceleration; }
+    void calculateAcceleration();
+    void update(double deltaTime);
+    void applyTrafficLightRules();
+    void setRoad(Road* r) { road = r; }
+
+    bool shouldWaitAt(double stopPos, double waitDuration);
 
 private:
     Road* road;
     double position;
     double speed;
     double acceleration;
-    double vmax;
-
-    static const double l;
-    static const double Vmax;
-    static const double amax;
-    static const double bmax;
-    static const double F_MIN;
-    static const double dt;
-    static const double xs;
-    static const double xs0;
-    static const double s;
+    const double vmax;
+    std::string type;
 };
 
-#endif // VEHICLE_H
+#endif

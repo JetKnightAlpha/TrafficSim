@@ -2,12 +2,13 @@
 #include "Road.h"
 #include "Vehicle.h"
 
-VehicleGenerator::VehicleGenerator(Road* road, int frequency)
-    : road(road), frequency(frequency), lastGenerated(-frequency) {}
+VehicleGenerator::VehicleGenerator(Road* road, int frequency, const std::string& vehicleType)
+    : road(road), frequency(frequency), lastGenerated(-frequency), type(vehicleType) {}
 
 void VehicleGenerator::update(double currentTime) {
     if (currentTime - lastGenerated >= frequency) {
-        road->addVehicle(new Vehicle(road, 0));
+        Vehicle* v = new Vehicle(road, 0, type);
+        road->addVehicle(v);
         lastGenerated = currentTime;
     }
 }

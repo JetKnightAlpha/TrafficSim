@@ -1,35 +1,45 @@
 #include "Vehicle.h"
 #include "Road.h"
-#include <cmath>
 #include "TrafficLight.h"
-#include "Vehicle.h"
+#include <cmath>
 #include <algorithm>
+#include <unordered_map>
 
-const double Vehicle::l    = 4;
-const double Vehicle::Vmax = 16.6;
-const double Vehicle::amax = 1.44;
-const double Vehicle::bmax = 4.61;
-const double Vehicle::F_MIN = 4;
-const double Vehicle::dt   = 0.0166;
-const double Vehicle::xs   = 50;
-const double Vehicle::xs0  = 15;
-const double Vehicle::s    = 0.4;
+const double l    = 4;
+const double Vmax = 16.6;
+const double amax = 1.44;
+const double bmax = 4.61;
+const double F_MIN = 4;
+const double xs0  = 15;
 
-Vehicle::Vehicle(Road* road, double position)
-    : road(road), position(position), speed(0), acceleration(0), vmax(Vmax) {}
+Vehicle::Vehicle(Road* road, double position, const std::string& type)
+    : road(road), position(position), speed(0), acceleration(0), vmax(Vmax), type(type) {}
 
 double Vehicle::getPosition() const { return position; }
+double Vehicle::getSpeed() const { return speed; }
+const std::string& Vehicle::getType() const { return type; }
+double Vehicle::getAcceleration() const { return acceleration; }
 
 void Vehicle::calculateAcceleration() {
     if (road->hasLeadingVehicle(this)) {
-        Vehicle* leading_vehicle = road->getLeadingVehicle(this);
-        double delta_x = leading_vehicle->getPosition() - position - l;
-        double delta_v = speed - leading_vehicle->getSpeed();
+        Vehicle* lead = road->getLeadingVehicle(this);
+        double delta_x = lead->getPosition() - position - l;
+        double delta_v = speed - lead->getSpeed();
 
-        double delta = F_MIN + std::max(0.0, (speed + delta_v) / (2 * std::sqrt(amax * bmax))) * delta_x;
-        acceleration = amax * (1 - std::pow(speed / vmax, 4) - std::pow(delta, 2));
+        double safe_gap = F_MIN + std::max(0.0, (speed + delta_v) / (2 * std::sqrt(amax * bmax))) * delta_x;
+        acceleration = amax * (1 - std::pow(speed / vmax, 4) - std::pow(safe_gap / delta_x, 2));
     } else {
         acceleration = amax * (1 - std::pow(speed / vmax, 4));
+    }
+}
+
+void Vehicle::applyTrafficLightRules() {
+    for (auto* light : road->getTrafficLights()) {
+        int lightPos = light->getPosition();
+        if (!light->isGreen() && lightPos > position && lightPos - position < xs0) {
+            double distanceToLight = lightPos - position;
+            acceleration = std::min(-bmax, -std::pow(distanceToLight / xs0, 2) * amax);
+        }
     }
 }
 
@@ -39,21 +49,21 @@ void Vehicle::update(double deltaTime) {
         speed = 0;
     } else {
         speed = std::min(speed + acceleration * deltaTime, vmax);
-        position += speed * deltaTime + (acceleration * deltaTime * deltaTime) / 2;
+        position += speed * deltaTime + 0.5 * acceleration * deltaTime * deltaTime;
     }
 }
 
-void Vehicle::applyTrafficLightRules() {
-    for (auto* light : road->getTrafficLights()) {
-        if (!light->isGreen() && light->getPosition() > position &&
-            light->getPosition() - position < xs0) {
-            double distanceToLight = light->getPosition() - position;
-            acceleration = std::min(-bmax, -std::pow(distanceToLight / xs0, 2) * amax);
-            }
+bool Vehicle::shouldWaitAt(double stopPos, double waitDuration) {
+    static std::unordered_map<double, double> waitTimers;
+    double distance = std::fabs(this->getPosition() - stopPos);
+    if (distance < 0.5) {
+        if (waitTimers[stopPos] < waitDuration) {
+            waitTimers[stopPos] += 0.0166;
+            this->speed = 0;
+            return true;
+        }
+    } else {
+        waitTimers[stopPos] = 0;
     }
-}
-
-
-double Vehicle::getSpeed() const {
-    return speed;
+    return false;
 }

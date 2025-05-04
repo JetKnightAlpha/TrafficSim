@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+
 class Vehicle;
 class TrafficLight;
 
@@ -20,6 +21,9 @@ public:
 
     bool hasLeadingVehicle(const Vehicle* vehicle) const;
     Vehicle* getLeadingVehicle(const Vehicle* vehicle) const;
+    void removeVehicle(Vehicle* vehicle);
+
+    static Road* getRoadByName(const std::string& roadName, const std::vector<Road*>& roads);
 
 private:
     std::string name;

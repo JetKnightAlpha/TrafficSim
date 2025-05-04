@@ -17,6 +17,9 @@ add_executable(TrafficSimulator
         tinyxml/tinystr.cpp
         tinyxml/tinyxmlerror.cpp
         tinyxml/tinyxmlparser.cpp
+        src/BusStop.cpp
+        src/GraphicsEngine.cpp
+        src/Intersection.cpp
 
 )
 
@@ -43,6 +46,9 @@ add_executable(TrafficSimulatorTests
         tinyxml/tinystr.cpp
         tinyxml/tinyxmlerror.cpp
         tinyxml/tinyxmlparser.cpp
+        src/BusStop.cpp
+        src/GraphicsEngine.cpp
+        src/Intersection.cpp
 )
 
 target_include_directories(TrafficSimulatorTests PUBLIC

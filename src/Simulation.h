@@ -8,17 +8,16 @@ class Road;
 class Vehicle;
 class TrafficLight;
 class VehicleGenerator;
+class BusStop;
+class Intersection;
 
 class Simulation {
 public:
     Simulation();
 
     void loadFromFile(const std::string& filename);
-
     void runStep();
-
     void run();
-
     void outputState() const;
 
     ~Simulation();
@@ -39,6 +38,9 @@ private:
     std::vector<Vehicle*> vehicles;
     std::vector<TrafficLight*> trafficLights;
     std::vector<VehicleGenerator*> generators;
+    std::vector<BusStop*> busStops;
+    std::vector<Intersection*> intersections;
+
 };
 
 #endif // SIMULATION_H
