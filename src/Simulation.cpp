@@ -77,7 +77,9 @@ void Simulation::outputState() const {
     std::cout << "Tijd: " << stepCounter << std::endl;
 
     for (const Road* road : roads) {
-        std::cout << "Baan: " << road->getName() << " heeft " << road->getVehicles().size() << " voertuigen" << std::endl;
+        if (road->getVehicles().size() == 0) {
+            break;
+        }
         for (const Vehicle* vehicle : road->getVehicles()) {
             int roundedPosition = static_cast<int>(std::round(vehicle->getPosition()));
             double roundedSpeed = std::round(vehicle->getSpeed() * 10.0) / 10.0;
