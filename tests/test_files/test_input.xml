@@ -47,9 +47,19 @@
     <type>politiecombi</type>
 </VOERTUIG>
 <VERKEERSLICHT>
-    <baan>Hoofdstraat</baan>
+    <baan>Middelheimlaan</baan>
     <positie>150</positie>
     <cyclus>30</cyclus>
+</VERKEERSLICHT>
+<VERKEERSLICHT>
+    <baan>Floralienlaan</baan>
+    <positie>400</positie>
+    <cyclus>20</cyclus>
+</VERKEERSLICHT>
+<VERKEERSLICHT>
+    <baan>Beukenlaan</baan>
+    <positie>800</positie>
+    <cyclus>25</cyclus>
 </VERKEERSLICHT>
 <BUSHALTE>
     <baan>Middelheimlaan</baan>

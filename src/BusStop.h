@@ -2,7 +2,6 @@
 #define BUSSTOP_H
 
 #include <string>
-#include "Vehicle.h"
 
 class BusStop {
 public:

@@ -15,9 +15,11 @@ public:
 
     void addVehicle(Vehicle* vehicle);
     void addTrafficLight(TrafficLight* light);
+    void addRoad(Road* road);
 
     const std::vector<Vehicle*>& getVehicles() const;
     const std::vector<TrafficLight*>& getTrafficLights() const;
+    const std::vector<Road*>& getRoads() const;
 
     bool hasLeadingVehicle(const Vehicle* vehicle) const;
     Vehicle* getLeadingVehicle(const Vehicle* vehicle) const;
@@ -28,6 +30,7 @@ public:
 private:
     std::string name;
     int length;
+    std::vector<Road*> roads;
     std::vector<Vehicle*> vehicles;
     std::vector<TrafficLight*> lights;
 };

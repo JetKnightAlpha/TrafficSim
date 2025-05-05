@@ -7,8 +7,21 @@ VehicleGenerator::VehicleGenerator(Road* road, int frequency, const std::string&
 
 void VehicleGenerator::update(double currentTime) {
     if (currentTime - lastGenerated >= frequency) {
-        Vehicle* v = new Vehicle(road, 0, type);
-        road->addVehicle(v);
-        lastGenerated = currentTime;
+        bool canGenerate = true;
+        double vehicleLength = 4.0;
+
+        for (auto* vehicle : road->getVehicles()) {
+            double vehiclePosition = vehicle->getPosition();
+            if (vehiclePosition > 0 && vehiclePosition < 2 * vehicleLength) {
+                canGenerate = false;
+                break;
+            }
+        }
+
+        if (canGenerate) {
+            Vehicle* v = new Vehicle(road, 0, type);
+            road->addVehicle(v);
+            lastGenerated = currentTime;
+        }
     }
 }

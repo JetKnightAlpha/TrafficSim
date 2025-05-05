@@ -27,32 +27,27 @@ void Simulation::runStep() {
 
             bool isWaiting = false;
             for (auto* busStop : busStops) {
-                if (busStop->getRoadName() == road->getName() && std::abs(vehicle->getPosition() - busStop->getPosition()) < 1.0) {
+                if (busStop->getRoadName() == road->getName()
+                    && std::abs(vehicle->getPosition() - busStop->getPosition()) < 1.0
+                    && vehicle->getType() == "bus") {
                     isWaiting = vehicle->shouldWaitAt(busStop->getPosition(), busStop->getWaitTime());
                     break;
-                }
+                    }
             }
 
             if (!isWaiting) {
                 vehicle->update(0.0166);
             }
 
-            double roadLength = road->getLength();
-            if (vehicle->getPosition() >= roadLength) {
-                vehicle->setPosition(roadLength);
-                vehicle->setSpeed(0);
-            }
             for (auto* intersection : intersections) {
-                if (intersection->isOn(*vehicle)) {
-                    intersection->handleRoadSwitch(*vehicle);
-                    break;
-                }
+                intersection->handleRoadSwitch(vehicle);
             }
 
+            if (vehicle->getRoad() == road && vehicle->getPosition() >= road->getLength()) {
+                road->removeVehicle(vehicle);
+            }
         }
-    }
 
-    for (auto* road : roads) {
         for (auto* light : road->getTrafficLights()) {
             light->update(currentTime);
         }
@@ -66,32 +61,44 @@ void Simulation::runStep() {
     stepCounter++;
 }
 
-
 void Simulation::run() {
-    for (int i = 0; i < 1000000; ++i) {
+    while (true) {
         runStep();
+
+        bool allRoadsEmpty = true;
+        for (auto* road : roads) {
+            if (!road->getVehicles().empty()) {
+                allRoadsEmpty = false;
+                break;
+            }
+        }
+
+        if (allRoadsEmpty) {
+            std::cout << "Simulation ended, no vehicles on roads" << std::endl;
+            break;
+        }
+
         outputState();
     }
 }
+
 
 void Simulation::outputState() const {
     int vehicleCounter = 1;
 
     std::cout << "Increment: " << stepCounter << std::endl;
-    std::cout << "Tijd: " << currentTime << std::endl;
+    std::cout << "Tijd: " << currentTime << std::endl
+    << "\n";
 
     for (const Road* road : roads) {
-        if (road->getVehicles().size() == 0) {
-            break;
-        }
+        if (!road->getVehicles().empty())
+            std::cout << "Baan: " << road->getName() << "\n" << std::endl;
         for (const Vehicle* vehicle : road->getVehicles()) {
             int roundedPosition = static_cast<int>(std::round(vehicle->getPosition()));
             double roundedSpeed = std::round(vehicle->getSpeed() * 10.0) / 10.0;
             std::cout << "Voertuig " << vehicleCounter
                       << std::endl
                       << "-> type: " << vehicle->getType()
-                      << std::endl
-                      << "-> baan: " << road->getName()
                       << std::endl
                       << "-> positie: " << roundedPosition
                       << std::endl
@@ -101,13 +108,14 @@ void Simulation::outputState() const {
         }
 
         for (const TrafficLight* light : road->getTrafficLights()) {
-            std::cout << "Verkeerslicht is "
-                      << (light->isGreen() ? "groen" : "rood")
-                      << "\n" << std::endl;
+            if (!road->getVehicles().empty()) {
+                std::cout << "Verkeerslicht is "
+                          << (light->isGreen() ? "groen" : "rood")
+                          << "\n" << std::endl;
+            }
         }
-
-        std::cout << "-----------------------------------" << std::endl;
     }
+    std::cout << "-----------------------------------" << std::endl;
 }
 
 Simulation::~Simulation() {

@@ -1,34 +1,22 @@
 #ifndef INTERSECTION_H
 #define INTERSECTION_H
 
-#include <string>
-#include <vector>
-#include <random>
-
-class Vehicle;
-class Road;
+#include "Road.h"
+#include "Vehicle.h"
 
 class Intersection {
 public:
-    struct EntryExit {
-        std::string entryRoad;
-        double entryPosition;
-        std::string exitRoad;
-        double exitPosition;
+    Intersection(Road* road1, double pos1, Road* road2, double pos2);
 
-        EntryExit(const std::string& entry, double entryPos, const std::string& exit, double exitPos)
-            : entryRoad(entry), entryPosition(entryPos), exitRoad(exit), exitPosition(exitPos) {}
-    };
-
-    Intersection(const std::vector<EntryExit>& entryExits);
-
-    bool isOn(const Vehicle& v) const;
-    void handleRoadSwitch(Vehicle& vehicle);
-    void setRoads(const std::vector<Road*>& allRoads);
+    void handleRoadSwitch(Vehicle* vehicle);
 
 private:
-    std::vector<EntryExit> entryExits;
-    std::vector<Road*> roads;
+    struct RoadConnection {
+        Road* road;
+        double position;
+    };
+
+    std::pair<RoadConnection, RoadConnection> roads;
 };
 
 #endif

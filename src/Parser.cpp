@@ -95,29 +95,32 @@ void Parser::parseFile(const std::string& filename,
             }
         }
         else if (tag == "KRUISPUNT") {
-            std::vector<Intersection::EntryExit> entryExits;
-            std::vector<std::pair<std::string, double>> temp;
-            TiXmlElement* baanElement = elem->FirstChildElement("baan");
-            while (baanElement) {
-                const char* posAttr = baanElement->Attribute("positie");
-                const char* roadName = baanElement->GetText();
+            TiXmlElement* firstBaan = elem->FirstChildElement("baan");
+            TiXmlElement* secondBaan = firstBaan ? firstBaan->NextSiblingElement("baan") : nullptr;
 
-                if (posAttr && roadName) {
-                    double pos = std::stod(posAttr);
-                    temp.emplace_back(roadName, pos);
+            if (firstBaan && secondBaan) {
+                const char* pos1Attr = firstBaan->Attribute("positie");
+                const char* pos2Attr = secondBaan->Attribute("positie");
+                const char* roadName1 = firstBaan->GetText();
+                const char* roadName2 = secondBaan->GetText();
+
+                if (pos1Attr && pos2Attr && roadName1 && roadName2) {
+                    double pos1 = std::stod(pos1Attr);
+                    double pos2 = std::stod(pos2Attr);
+
+                    Road* road1 = nullptr;
+                    Road* road2 = nullptr;
+
+                    for (auto* r : roads) {
+                        if (r->getName() == roadName1) road1 = r;
+                        if (r->getName() == roadName2) road2 = r;
+                    }
+                    intersections.push_back(new Intersection(road1, pos1, road2, pos2));
                 }
-                baanElement = baanElement->NextSiblingElement("baan");
-            }
-            if (temp.size() == 2) {
-                entryExits.emplace_back(
-                    temp[0].first, temp[0].second,
-                    temp[1].first, temp[1].second
-                );
-            }
-            if (!entryExits.empty()) {
-                intersections.push_back(new Intersection(entryExits));
             }
         }
+
+
 
         else if (tag == "VERKEERSLICHT") {
             TiXmlElement* baanElement = elem->FirstChildElement("baan");

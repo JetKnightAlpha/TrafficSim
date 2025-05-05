@@ -35,7 +35,7 @@ void Vehicle::applyTrafficLightRules() {
         int lightPos = light->getPosition();
         if (!light->isGreen() && lightPos > position && lightPos - position < xs0) {
             double distanceToLight = lightPos - position;
-            acceleration = std::min(-bmax, -std::pow(distanceToLight / xs0, 2) * amax);
+            acceleration = std::min(-bmax, -std::pow(distanceToLight / xs0, 2) * amax);  // Slow down
         }
     }
 }
@@ -47,12 +47,6 @@ void Vehicle::update(double deltaTime) {
     } else {
         speed = std::min(speed + acceleration * deltaTime, vmax);
         position += speed * deltaTime + 0.5 * acceleration * deltaTime * deltaTime;
-    }
-
-    double roadLength = road->getLength();
-    if (position > roadLength) {
-        position = 0;
-        speed = 0;
     }
 }
 
@@ -71,10 +65,19 @@ bool Vehicle::shouldWaitAt(double stopPos, double waitDuration) {
     return false;
 }
 
-double Vehicle::getPosition() const { return position; }
-double Vehicle::getSpeed() const { return speed; }
-const std::string& Vehicle::getType() const { return type; }
-double Vehicle::getAcceleration() const { return acceleration; }
+double Vehicle::getPosition() const {
+    return position;
+}
+double Vehicle::getSpeed() const {
+    return speed;
+}
+const std::string& Vehicle::getType() const {
+    return type;
+}
+double Vehicle::getAcceleration() const {
+    return acceleration;
+}
+
 
 void Vehicle::setRoad(Road* r) {
     road = r;

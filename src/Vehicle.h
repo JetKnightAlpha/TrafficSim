@@ -9,9 +9,10 @@ class Vehicle {
 public:
     Vehicle(Road* road, double position, const std::string& type);
 
-    const Road* getRoad() const { return road; }
+    const Road* getRoad() const {
+        return road;
+    }
     const std::string& getType() const;
-
     double getPosition() const;
     double getSpeed() const;
     double getAcceleration() const;

@@ -11,9 +11,13 @@ Road::Road(const std::string& name, int length) {
     this->length = std::max(length, 100);
 }
 
-const std::string& Road::getName() const { return name; }
+const std::string& Road::getName() const {
+    return name;
+}
 
-int Road::getLength() const { return length; }
+int Road::getLength() const {
+    return length;
+}
 
 void Road::addVehicle(Vehicle* vehicle) {
     vehicles.push_back(vehicle);
@@ -23,9 +27,21 @@ void Road::addTrafficLight(TrafficLight* light) {
     lights.push_back(light);
 }
 
-const std::vector<Vehicle*>& Road::getVehicles() const { return vehicles; }
+void Road::addRoad(Road* road) {
+    roads.push_back(road);
+}
 
-const std::vector<TrafficLight*>& Road::getTrafficLights() const { return lights; }
+const std::vector<Vehicle*>& Road::getVehicles() const {
+    return vehicles;
+}
+
+const std::vector<TrafficLight*>& Road::getTrafficLights() const {
+    return lights;
+}
+
+const std::vector<Road*>& Road::getRoads() const {
+    return roads;
+}
 
 bool Road::hasLeadingVehicle(const Vehicle* vehicle) const {
     for (auto* v : vehicles) {

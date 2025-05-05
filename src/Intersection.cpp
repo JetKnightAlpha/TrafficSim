@@ -1,47 +1,32 @@
 #include "Intersection.h"
-#include "Vehicle.h"
-#include "Road.h"
-#include <iostream>
-#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
 
-Intersection::Intersection(const std::vector<EntryExit>& entryExits)
-    : entryExits(entryExits) {
+Intersection::Intersection(Road* road1, double pos1, Road* road2, double pos2) {
+    roads.first = {road1, pos1};
+    roads.second = {road2, pos2};
+
+    static bool seeded = false;
+    if (!seeded) {
+        std::srand(static_cast<unsigned int>(std::time(nullptr)));
+        seeded = true;
+    }
 }
 
-bool Intersection::isOn(const Vehicle& v) const {
-    return std::abs(v.getPosition() - entryExits[0].entryPosition) < 1.0;
-}
+void Intersection::handleRoadSwitch(Vehicle* vehicle) {
+    Road* currentRoad = const_cast<Road*>(vehicle->getRoad());
+    double vehiclePos = vehicle->getPosition();
 
-void Intersection::setRoads(const std::vector<Road*>& allRoads) {
-    roads = allRoads;
-}
+    auto& entry = roads.first;
+    auto& exit = roads.second;
 
-void Intersection::handleRoadSwitch(Vehicle& vehicle) {
-    Road* currentRoad = const_cast<Road*>(vehicle.getRoad());
-
-    if (currentRoad) {
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(0, 1);
-
-        int decision = dis(gen);
-
-        if (decision == 1) {
-            for (const auto& entryExit : entryExits) {
-                if (currentRoad->getName() == entryExit.entryRoad) {
-                    Road * newRoad = Road::getRoadByName(entryExit.exitRoad, roads);
-
-                    if (newRoad) {
-                        vehicle.setRoad(newRoad);
-                        vehicle.setSpeed(0);
-                        vehicle.setPosition(entryExit.exitPosition);
-                        break;
-                    }
-                } else {
-                    vehicle.setPosition(vehicle.getPosition());
-                    vehicle.setSpeed(vehicle.getSpeed());
-                }
-            }
+    if (currentRoad == entry.road && std::abs(vehiclePos - entry.position) < 1.0) {
+        if ((std::rand() % 100) < 30) {
+            entry.road->removeVehicle(vehicle);
+            exit.road->addVehicle(vehicle);
+            vehicle->setRoad(exit.road);
+            vehicle->setPosition(exit.position);
         }
     }
 }

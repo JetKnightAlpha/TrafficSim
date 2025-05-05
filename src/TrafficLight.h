@@ -7,19 +7,18 @@ class Road;
 
 class TrafficLight {
 public:
-    TrafficLight(Road* road, int position, int cycle);
+    TrafficLight(Road* road, double position, int cycle);
 
     void update(double time);
-
     std::string getStatus() const;
-
     bool isGreen() const;
 
-    int getPosition() const;
+    double getPosition() const;
+    Road* getRoad() const;
 
 private:
     Road* road;
-    int position;
+    double position;
     int cycle;
     bool green;
     double lastSwitchTime;

@@ -2,7 +2,6 @@
 #define GRAPHICSENGINE_H
 
 #include <vector>
-#include <memory>
 
 class Road;
 class Vehicle;
