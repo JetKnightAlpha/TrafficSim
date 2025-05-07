@@ -172,6 +172,7 @@ $RECYCLE.BIN/
 /gtest/lib/libgtest_main.a
 /gtest/lib/libgtest.a
 /gtest/lib/**/*
+/gtest/include
 # technical files
 .idea
 .idea/**/*

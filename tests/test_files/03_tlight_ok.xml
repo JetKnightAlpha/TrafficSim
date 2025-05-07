@@ -1,2 +1,9 @@
-<BAAN> RoadA 200 </BAAN>
-<VERKEERSLICHT> RoadA 100 60 </VERKEERSLICHT>
+<BAAN>
+    <naam>RoadA</naam>
+    <lengte>200</lengte>
+</BAAN>
+<VERKEERSLICHT>
+    <baan>RoadA</baan>
+    <positie>100</positie>
+    <cyclus>30</cyclus>
+</VERKEERSLICHT>

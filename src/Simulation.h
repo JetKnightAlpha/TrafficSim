@@ -17,6 +17,7 @@ public:
     ~Simulation();
 
     void loadFromFile(const std::string& filename);
+    void runStep();
     void run();
     void outputState() const;
     void addRoad(Road* road);
@@ -26,9 +27,12 @@ public:
     const std::vector<Road*>& getRoads() const;
     const std::vector<Vehicle*>& getVehicles() const;
     const std::vector<TrafficLight*>& getTrafficLights() const;
+    const std::vector<Intersection*>& getIntersections() const;
+
+    double currentTime;
+
 
 private:
-    void runStep();
     void processVehicles();
     void processTrafficLights();
     void processGenerators();
@@ -40,7 +44,6 @@ private:
     std::vector<BusStop*> busStops;
     std::vector<Intersection*> intersections;
 
-    double currentTime;
     int stepCounter;
     int vehicleCounter;
 };

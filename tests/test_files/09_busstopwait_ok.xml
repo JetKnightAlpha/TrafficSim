@@ -1,2 +1,9 @@
-<BAAN> Lijn 500 </BAAN>
-<BUSHALTE> Lijn 250 20 </BUSHALTE>
+<BAAN>
+    <naam>Lijn</naam>
+    <lengte>500</lengte>
+</BAAN>
+<BUSHALTE>
+    <baan>Lijn</baan>
+    <positie>250</positie>
+    <wachttijd>20</wachttijd>
+</BUSHALTE>

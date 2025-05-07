@@ -1,2 +1,9 @@
-<BAAN> Main 500 </BAAN>
-<VOERTUIGGENERATOR> Main 10 auto </VOERTUIGGENERATOR>
+<BAAN>
+    <naam>Main</naam>
+    <lengte>500</lengte>
+</BAAN>
+<VOERTUIGGENERATOR>
+    <baan>Main</baan>
+    <frequentie>10</frequentie>
+    <type>auto</type>
+</VOERTUIGGENERATOR>

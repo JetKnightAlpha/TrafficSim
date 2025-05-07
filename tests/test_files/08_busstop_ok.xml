@@ -1,2 +1,9 @@
-<BAAN> Ring 800 </BAAN>
-<BUSHALTE> Ring 400 15 </BUSHALTE>
+<BAAN>
+    <naam>Ring</naam>
+    <lengte>800</lengte>
+</BAAN>
+<BUSHALTE>
+    <baan>Ring</baan>
+    <positie>400</positie>
+    <wachttijd>15</wachttijd>
+</BUSHALTE>

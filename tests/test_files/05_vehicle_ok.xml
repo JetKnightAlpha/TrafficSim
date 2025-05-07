@@ -1,2 +1,9 @@
-<BAAN> Track 400 </BAAN>
-<VOERTUIG> Track 50 auto </VOERTUIG>
+<BAAN>
+    <naam>Track</naam>
+    <lengte>400</lengte>
+</BAAN>
+<VOERTUIG>
+    <baan>Track</baan>
+    <positie>50</positie>
+    <type>auto</type>
+</VOERTUIG>

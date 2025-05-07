@@ -32,11 +32,12 @@
 </KRUISPUNT>
 <VOERTUIGGENERATOR>
     <baan>Middelheimlaan</baan>
-    <frequentie>300</frequentie>
+    <frequentie>10</frequentie>
     <type>auto</type>
-</VOERTUIGGENERATOR><VOERTUIGGENERATOR>
+</VOERTUIGGENERATOR>
+<VOERTUIGGENERATOR>
     <baan>Middelheimlaan</baan>
-    <frequentie>3600</frequentie>
+    <frequentie>60</frequentie>
     <type>bus</type>
 </VOERTUIGGENERATOR>
 <VOERTUIG>

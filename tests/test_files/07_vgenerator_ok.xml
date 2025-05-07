@@ -1,2 +1,9 @@
-<BAAN> G 200 </BAAN>
-<VOERTUIGGENERATOR> G 5 auto </VOERTUIGGENERATOR>
+<BAAN>
+    <naam>G</naam>
+    <lengte>200</lengte>
+</BAAN>
+<VOERTUIGGENERATOR>
+    <baan>G</baan>
+    <frequentie>5</frequentie>
+    <type>auto</type>
+</VOERTUIGGENERATOR>

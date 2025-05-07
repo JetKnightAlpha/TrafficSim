@@ -1,5 +1,11 @@
-<BAAN> A 300 </BAAN>
-<BAAN> B 300 </BAAN>
+<BAAN>
+  <naam>A</naam>
+  <lengte>300</lengte>
+</BAAN>
+<BAAN>
+  <naam>B</naam>
+  <lengte>300</lengte>
+</BAAN>
 <KRUISPUNT>
   <baan positie="150">A</baan>
   <baan positie="150">B</baan>
