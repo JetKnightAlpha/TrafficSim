@@ -109,7 +109,9 @@ void Simulation::outputState() const {
 
         for (const TrafficLight* light : road->getTrafficLights()) {
             if (!road->getVehicles().empty()) {
-                std::cout << "Verkeerslicht is "
+                std::cout << "Verkeerslicht op positie "
+                          << light->getPosition()
+                          << " is "
                           << (light->isGreen() ? "groen" : "rood")
                           << "\n" << std::endl;
             }

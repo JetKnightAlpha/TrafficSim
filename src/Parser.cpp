@@ -115,7 +115,9 @@ void Parser::parseFile(const std::string& filename,
                         if (r->getName() == roadName1) road1 = r;
                         if (r->getName() == roadName2) road2 = r;
                     }
-                    intersections.push_back(new Intersection(road1, pos1, road2, pos2));
+                    if (road1 && road2) {
+                        intersections.push_back(new Intersection(road1, pos1, road2, pos2));
+                    }
                 }
             }
         }
