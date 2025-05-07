@@ -6,17 +6,19 @@
 #include <algorithm>
 #include <unordered_map>
 
-const double l    = 4;
-const double Vmax = 16.6;
-const double amax = 1.44;
-const double bmax = 4.61;
-const double F_MIN = 4;
-const double xs0  = 15;
+// Constants for vehicle behavior
+const double l    = 4;          // Vehicle length
+const double Vmax = 16.6;       // Maximum speed
+const double amax = 1.44;       // Maximum acceleration
+const double bmax = 4.61;       // Maximum braking force
+const double F_MIN = 4;         // Minimum following distance
+const double xs0  = 15;         // Minimum stopping distance
 
+// Constructor initializes vehicle with road, position, type, and other attributes
 Vehicle::Vehicle(Road* road, double position, const std::string& type)
     : road(road), position(position), speed(0), acceleration(0), vmax(Vmax), type(type) {}
 
-
+// Calculates the vehicle's acceleration based on the leading vehicle and current state
 void Vehicle::calculateAcceleration() {
     if (road->hasLeadingVehicle(this)) {
         Vehicle* lead = road->getLeadingVehicle(this);
@@ -30,6 +32,7 @@ void Vehicle::calculateAcceleration() {
     }
 }
 
+// Applies traffic light rules, slowing down if the vehicle is near a red light
 void Vehicle::applyTrafficLightRules() {
     for (auto* light : road->getTrafficLights()) {
         int lightPos = light->getPosition();
@@ -40,6 +43,7 @@ void Vehicle::applyTrafficLightRules() {
     }
 }
 
+// Updates the vehicle's position and speed based on acceleration and time
 void Vehicle::update(double deltaTime) {
     if (speed + acceleration * deltaTime < 0) {
         position -= (speed * speed) / (2 * acceleration);
@@ -50,6 +54,7 @@ void Vehicle::update(double deltaTime) {
     }
 }
 
+// Determines if the vehicle should wait at a bus stop
 bool Vehicle::shouldWaitAt(double stopPos, double waitDuration) {
     static std::unordered_map<double, double> waitTimers;
     double distance = std::fabs(this->getPosition() - stopPos);
@@ -65,28 +70,37 @@ bool Vehicle::shouldWaitAt(double stopPos, double waitDuration) {
     return false;
 }
 
+// Returns the position of the vehicle
 double Vehicle::getPosition() const {
     return position;
 }
+
+// Returns the speed of the vehicle
 double Vehicle::getSpeed() const {
     return speed;
 }
+
+// Returns the type of the vehicle (bus, auto, etc.)
 const std::string& Vehicle::getType() const {
     return type;
 }
+
+// Returns the acceleration of the vehicle
 double Vehicle::getAcceleration() const {
     return acceleration;
 }
 
-
+// Sets the road the vehicle is currently on
 void Vehicle::setRoad(Road* r) {
     road = r;
 }
 
+// Sets the vehicle's position
 void Vehicle::setPosition(double newPosition) {
     position = newPosition;
 }
 
+// Sets the vehicle's speed
 void Vehicle::setSpeed(double newSpeed) {
     speed = newSpeed;
 }

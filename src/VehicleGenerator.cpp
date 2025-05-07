@@ -2,9 +2,11 @@
 #include "Road.h"
 #include "Vehicle.h"
 
+// Constructor initializes vehicle generator with road, frequency, and vehicle type
 VehicleGenerator::VehicleGenerator(Road* road, int frequency, const std::string& vehicleType)
     : road(road), frequency(frequency), lastGenerated(-frequency), type(vehicleType) {}
 
+// Updates the generator, creating new vehicles based on frequency
 void VehicleGenerator::update(double currentTime) {
     if (currentTime - lastGenerated >= frequency) {
         bool canGenerate = true;
@@ -17,7 +19,6 @@ void VehicleGenerator::update(double currentTime) {
                 break;
             }
         }
-
         if (canGenerate) {
             Vehicle* v = new Vehicle(road, 0, type);
             road->addVehicle(v);

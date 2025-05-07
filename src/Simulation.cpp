@@ -9,14 +9,16 @@
 #include <iostream>
 #include <cmath>
 
+// Constructor initializes simulation state (time, step counter, vehicle counter)
 Simulation::Simulation()
-    : currentTime(0), stepCounter(0), vehicleCounter(1) {
-}
+    : currentTime(0), stepCounter(0), vehicleCounter(1) {}
 
+// Loads simulation data from a file
 void Simulation::loadFromFile(const std::string& filename) {
     Parser::parseFile(filename, roads, generators, busStops, intersections);
 }
 
+// Runs one step of the simulation (vehicle updates, traffic light updates, etc.)
 void Simulation::runStep() {
     for (auto* road : roads) {
         for (auto* vehicle : road->getVehicles()) {
@@ -61,6 +63,7 @@ void Simulation::runStep() {
     stepCounter++;
 }
 
+// Runs the simulation until all roads are empty
 void Simulation::run() {
     while (true) {
         runStep();
@@ -82,7 +85,7 @@ void Simulation::run() {
     }
 }
 
-
+// Outputs the current state of the simulation (vehicle positions, speeds, traffic lights)
 void Simulation::outputState() const {
     int vehicleCounter = 1;
 
@@ -109,7 +112,9 @@ void Simulation::outputState() const {
 
         for (const TrafficLight* light : road->getTrafficLights()) {
             if (!road->getVehicles().empty()) {
-                std::cout << "Verkeerslicht is "
+                std::cout << "Verkeerslicht op positie "
+                          << light->getPosition()
+                          << " is "
                           << (light->isGreen() ? "groen" : "rood")
                           << "\n" << std::endl;
             }
@@ -118,6 +123,7 @@ void Simulation::outputState() const {
     std::cout << "-----------------------------------" << std::endl;
 }
 
+// Destructor cleans up dynamically allocated memory for roads, vehicles, and other objects
 Simulation::~Simulation() {
     for (auto* road : roads) {
         for (auto* vehicle : road->getVehicles())
@@ -140,26 +146,32 @@ Simulation::~Simulation() {
     }
 }
 
+// Adds a road to the simulation
 void Simulation::addRoad(Road* road) {
     roads.push_back(road);
 }
 
+// Adds a traffic light to the simulation
 void Simulation::addTrafficLight(TrafficLight* light) {
     trafficLights.push_back(light);
 }
 
+// Adds a vehicle to the simulation
 void Simulation::addVehicle(Vehicle* vehicle) {
     vehicles.push_back(vehicle);
 }
 
+// Returns the list of roads in the simulation
 const std::vector<Road*>& Simulation::getRoads() const {
     return roads;
 }
 
+// Returns the list of vehicles in the simulation
 const std::vector<Vehicle*>& Simulation::getVehicles() const {
     return vehicles;
 }
 
+// Returns the list of traffic lights in the simulation
 const std::vector<TrafficLight*>& Simulation::getTrafficLights() const {
     return trafficLights;
 }

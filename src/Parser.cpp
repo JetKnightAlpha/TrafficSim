@@ -10,6 +10,8 @@
 #include "Intersection.h"
 #include "../tinyxml/tinyxml.h"
 
+// Parses the XML input file and fills vectors with roads, vehicle generators,
+// bus stops, traffic lights, vehicles, and intersections based on tags
 void Parser::parseFile(const std::string& filename,
                        std::vector<Road*>& roads,
                        std::vector<VehicleGenerator*>& generators,
@@ -61,7 +63,6 @@ void Parser::parseFile(const std::string& filename,
                 int pos = std::stoi(posElement->GetText());
                 std::string type = typeElement->GetText();
 
-                // Check if the road exists, create it if not
                 Road* road = nullptr;
                 for (auto* r : roads) {
                     if (r->getName() == baan) {
@@ -70,7 +71,7 @@ void Parser::parseFile(const std::string& filename,
                     }
                 }
                 if (!road) {
-                    road = new Road(baan, 1000); // Default length if road doesn't exist
+                    road = new Road(baan, 1000);
                     roads.push_back(road);
                 }
 
@@ -115,13 +116,12 @@ void Parser::parseFile(const std::string& filename,
                         if (r->getName() == roadName1) road1 = r;
                         if (r->getName() == roadName2) road2 = r;
                     }
-                    intersections.push_back(new Intersection(road1, pos1, road2, pos2));
+                    if (road1 && road2) {
+                        intersections.push_back(new Intersection(road1, pos1, road2, pos2));
+                    }
                 }
             }
         }
-
-
-
         else if (tag == "VERKEERSLICHT") {
             TiXmlElement* baanElement = elem->FirstChildElement("baan");
             TiXmlElement* posElement = elem->FirstChildElement("positie");

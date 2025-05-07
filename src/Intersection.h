@@ -7,7 +7,6 @@
 class Intersection {
 public:
     Intersection(Road* road1, double pos1, Road* road2, double pos2);
-
     void handleRoadSwitch(Vehicle* vehicle);
 
 private:

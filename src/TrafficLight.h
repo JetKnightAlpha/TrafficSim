@@ -14,7 +14,6 @@ public:
     bool isGreen() const;
 
     double getPosition() const;
-    Road* getRoad() const;
 
 private:
     Road* road;
