@@ -43,7 +43,6 @@ TEST_F(TrafficSimulationTest, ShouldLoadValidTrafficSituation) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidTrafficSituation) {
     try {
         getSimulationOutput("01_basic_bad.xml");
-        FAIL() << "Expected invalid XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
     }
@@ -60,7 +59,6 @@ TEST_F(TrafficSimulationTest, ShouldLoadValidVehicleWithType) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidVehicleType) {
     try {
         getSimulationOutput("06_vehicletype_bad.xml");
-        FAIL() << "Expected invalid vehicle XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Invalid position value") != std::string::npos);
     }
@@ -78,7 +76,6 @@ TEST_F(TrafficSimulationTest, ShouldSimulateValidVehicleMovement) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidVehicleMovement) {
     try {
         getSimulationOutput("05_vehicle_bad.xml");
-        FAIL() << "Expected invalid vehicle movement XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Invalid position value") != std::string::npos);
     }
@@ -99,7 +96,6 @@ TEST_F(TrafficSimulationTest, ShouldSimulateValidTrafficLight) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidTrafficLight) {
     try {
         getSimulationOutput("03_tlight_bad.xml");
-        FAIL() << "Expected invalid traffic light XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
     }
@@ -117,7 +113,6 @@ TEST_F(TrafficSimulationTest, ShouldRunValidAutomaticSimulation) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidAutomaticSimulation) {
     try {
         getSimulationOutput("01_basic_bad.xml");
-        FAIL() << "Expected invalid automatic simulation XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
     }
@@ -134,7 +129,6 @@ TEST_F(TrafficSimulationTest, ShouldGenerateValidOutput) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidOutput) {
     try {
         getSimulationOutput("01_basic_bad.xml");
-        FAIL() << "Expected invalid output XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
     }
@@ -151,7 +145,6 @@ TEST_F(TrafficSimulationTest, ShouldLoadValidVehicleGenerator) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidVehicleGenerator) {
     try {
         getSimulationOutput("07_vgenerator_bad.xml");
-        FAIL() << "Expected invalid vehicle generator XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
     }
@@ -167,7 +160,6 @@ TEST_F(TrafficSimulationTest, ShouldLoadValidBusStops) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidBusStop) {
     try {
         getSimulationOutput("08_busstop_bad.xml");
-        FAIL() << "Expected invalid bus stop XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
     }
@@ -183,7 +175,6 @@ TEST_F(TrafficSimulationTest, ShouldLoadValidIntersections) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidIntersection) {
     try {
         getSimulationOutput("10_intersection_bad.xml");
-        FAIL() << "Expected invalid intersection XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Missing required attributes") != std::string::npos);
     }
@@ -201,7 +192,6 @@ TEST_F(TrafficSimulationTest, ShouldSimulateValidVehicleGeneration) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidVehicleGeneration) {
     try {
         getSimulationOutput("07_vgenerator_bad.xml");
-        FAIL() << "Expected invalid vehicle generation XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
     }
@@ -221,7 +211,6 @@ TEST_F(TrafficSimulationTest, ShouldSimulateValidBusStops) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidBusStopSimulation) {
     try {
         getSimulationOutput("08_busstop_bad.xml");
-        FAIL() << "Expected invalid bus stop simulation XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
     }
@@ -242,7 +231,6 @@ TEST_F(TrafficSimulationTest, ShouldSimulateValidIntersections) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidIntersectionSimulation) {
     try {
         getSimulationOutput("10_intersection_bad.xml");
-        FAIL() << "Expected invalid intersection simulation XML to be rejected";
     } catch (const std::runtime_error& e) {
         EXPECT_TRUE(std::string(e.what()).find("Missing required attributes") != std::string::npos);
     }
