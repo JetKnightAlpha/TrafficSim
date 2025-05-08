@@ -6,6 +6,9 @@
 
 class Vehicle;
 class TrafficLight;
+class Intersection;
+class BusStop;
+class VehicleGenerator;
 
 class Road {
 public:
@@ -16,6 +19,9 @@ public:
     void addVehicle(Vehicle* vehicle);
     void addTrafficLight(TrafficLight* light);
     void addRoad(Road* road);
+    void addBusStop(BusStop* stop);
+    void addIntersection(Intersection* intersection);
+    void update();
 
     const std::vector<Vehicle*>& getVehicles() const;
     const std::vector<TrafficLight*>& getTrafficLights() const;
@@ -33,6 +39,9 @@ private:
     std::vector<Road*> roads;
     std::vector<Vehicle*> vehicles;
     std::vector<TrafficLight*> lights;
+    std::vector<VehicleGenerator*> generators;
+    std::vector<BusStop*> busStops;
+    std::vector<Intersection*> intersections;
 };
 
 #endif

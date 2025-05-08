@@ -13,61 +13,13 @@
 Simulation::Simulation()
     : currentTime(0), stepCounter(0), vehicleCounter(1) {}
 
-// Loads simulation data from a file using the Parser
-void Simulation::loadFromFile(const std::string& filename) {
-    // Parses roads, generators, bus stops, and intersections from file
-    Parser::parseFile(filename, roads, generators, busStops, intersections);
-
-    // Collect vehicles and traffic lights from roads
-    for (auto* road : roads) {
-        for (auto* vehicle : road->getVehicles()) {
-            vehicles.push_back(vehicle);
-        }
-        for (auto* light : road->getTrafficLights()) {
-            trafficLights.push_back(light);
-        }
-    }
-}
-
 // Runs one step of the simulation
 void Simulation::runStep() {
     // Iterate over each road to update vehicles, traffic lights, and generators
     for (auto* road : roads) {
-        for (auto* vehicle : road->getVehicles()) {
-            if (vehicle == nullptr) continue;
 
-            // Update vehicle's acceleration and check traffic lights
-            vehicle->calculateAcceleration();
-            vehicle->applyTrafficLightRules();
-
-            // Check if a bus needs to wait at a bus stop
-            bool isWaiting = false;
-            for (auto* busStop : busStops) {
-                if (busStop->getRoadName() == road->getName()
-                    && std::abs(vehicle->getPosition() - busStop->getPosition()) < 1.0
-                    && vehicle->getType() == "bus") {
-
-                    // Determine whether the bus should wait
-                    isWaiting = vehicle->shouldWaitAt(busStop->getPosition(), busStop->getWaitTime());
-                    break;
-                }
-            }
-
-            // Update vehicle position if it's not waiting
-            if (!isWaiting) {
-                vehicle->update(0.0166); // 1 frame ~60 FPS
-            }
-
-            // Handle vehicle switching roads at intersections
-            for (auto* intersection : intersections) {
-                intersection->handleRoadSwitch(vehicle);
-            }
-
-            // Remove vehicle if it reached the end of the road
-            if (vehicle->getRoad() == road && vehicle->getPosition() >= road->getLength()) {
-                road->removeVehicle(vehicle);
-            }
-        }
+        // Update all roads
+        road->update();
 
         // Update all traffic lights on the road
         for (auto* light : road->getTrafficLights()) {
@@ -199,6 +151,18 @@ const std::vector<Road*>& Simulation::getRoads() const {
     return roads;
 }
 
+void Simulation::addGenerator(VehicleGenerator* generator) {
+    generators.push_back(generator);
+}
+
+void Simulation::addBusStop(BusStop* stop) {
+    busStops.push_back(stop);
+}
+
+void Simulation::addIntersection(Intersection* intersection) {
+    intersections.push_back(intersection);
+}
+
 // Returns list of vehicles
 const std::vector<Vehicle*>& Simulation::getVehicles() const {
     return vehicles;
@@ -212,4 +176,8 @@ const std::vector<TrafficLight*>& Simulation::getTrafficLights() const {
 // Returns list of intersections
 const std::vector<Intersection*>& Simulation::getIntersections() const {
     return intersections;
+}
+
+const std::vector<BusStop*>& Simulation::getBusStops() const {
+    return busStops;
 }

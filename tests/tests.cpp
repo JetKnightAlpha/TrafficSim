@@ -6,21 +6,52 @@
 #include "VehicleGenerator.h"
 #include "BusStop.h"
 #include "Intersection.h"
+#include "Parser.h"
 #include <filesystem>
 #include <memory>
 
 namespace fs = std::filesystem;
 const fs::path RES = fs::path("..") / "tests" / "test_files";
 
+static std::unique_ptr<Simulation> loadFromFile(const std::string& file)
+{
+    auto sim = std::make_unique<Simulation>();
+
+    std::vector<Road*> roads;
+    std::vector<VehicleGenerator*> generators;
+    std::vector<BusStop*> busStops;
+    std::vector<Intersection*> intersections;
+
+    Parser::parseFile((RES / file).string(), roads, generators, busStops, intersections);
+
+    for (auto* road : roads)
+        sim->addRoad(road);
+    for (auto* gen : generators)
+        sim->addGenerator(gen);
+    for (auto* bs : busStops)
+        sim->addBusStop(bs);
+    for (auto* isec : intersections)
+        sim->addIntersection(isec);
+    for (auto* road : roads) {
+        for (auto* vehicle : road->getVehicles())
+            sim->addVehicle(vehicle);
+        for (auto* light : road->getTrafficLights())
+            sim->addTrafficLight(light);
+    }
+
+    return sim;
+}
+
+
 // Helper functions
 static std::string getSimulationOutput(const std::string& file)
 {
-    Simulation sim;
-    sim.loadFromFile((RES / file).string());
+    auto sim = loadFromFile(file);
     testing::internal::CaptureStdout();
-    sim.outputState();
+    sim->outputState();
     return testing::internal::GetCapturedStdout();
 }
+
 
 // Test fixtures
 class TrafficSimulationTest : public ::testing::Test {
@@ -32,7 +63,8 @@ protected:
 };
 
 // VERPLICHT (MANDATORY) REQUIREMENTS
-// 1. Verkeerssituatie inlezen (Loading traffic situation)
+
+// 1. Verkeerssituatie inlezen
 TEST_F(TrafficSimulationTest, ShouldLoadValidTrafficSituation) {
     std::string output = getSimulationOutput("01_basic_ok.xml");
     EXPECT_FALSE(output.empty());
@@ -43,12 +75,13 @@ TEST_F(TrafficSimulationTest, ShouldLoadValidTrafficSituation) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidTrafficSituation) {
     try {
         getSimulationOutput("01_basic_bad.xml");
+        FAIL() << "Expected invalid XML to be rejected";
     } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
+        SUCCEED();
     }
 }
 
-// 2. Voertuig met type inlezen (Loading vehicle with type)
+// 2. Voertuig met type inlezen
 TEST_F(TrafficSimulationTest, ShouldLoadValidVehicleWithType) {
     std::string output = getSimulationOutput("06_vehicletype_ok.xml");
     EXPECT_FALSE(output.empty());
@@ -59,14 +92,15 @@ TEST_F(TrafficSimulationTest, ShouldLoadValidVehicleWithType) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidVehicleType) {
     try {
         getSimulationOutput("06_vehicletype_bad.xml");
+        FAIL() << "Expected invalid vehicle XML to be rejected";
     } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Invalid position value") != std::string::npos);
+        SUCCEED();
     }
 }
 
-// 3. Rijden van voertuig (Vehicle movement)
+// 3. Rijden van voertuig
 TEST_F(TrafficSimulationTest, ShouldSimulateValidVehicleMovement) {
-    sim->loadFromFile((RES / "05_vehicle_ok.xml").string());
+    sim = loadFromFile("05_vehicle_ok.xml");
     auto initialPos = sim->getVehicles()[0]->getPosition();
     sim->runStep();
     auto newPos = sim->getVehicles()[0]->getPosition();
@@ -76,17 +110,17 @@ TEST_F(TrafficSimulationTest, ShouldSimulateValidVehicleMovement) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidVehicleMovement) {
     try {
         getSimulationOutput("05_vehicle_bad.xml");
-    } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Invalid position value") != std::string::npos);
+        FAIL() << "Expected invalid vehicle movement XML to be rejected";
+    } catch (const std::runtime_error&) {
+        SUCCEED();
     }
 }
 
-// 4. Simulatie van verkeerslicht (Traffic light simulation)
+// 4. Simulatie van verkeerslicht
 TEST_F(TrafficSimulationTest, ShouldSimulateValidTrafficLight) {
-    sim->loadFromFile((RES / "03_tlight_ok.xml").string());
+    sim = loadFromFile("03_tlight_ok.xml");
     auto initialState = sim->getTrafficLights()[0]->isGreen();
-    // Run enough steps to ensure the traffic light changes state
-    for (int i = 0; i < 1875; i++) {  // 300 steps = 30 seconds
+    for (int i = 0; i < 1875; i++) {
         sim->runStep();
     }
     auto newState = sim->getTrafficLights()[0]->isGreen();
@@ -96,14 +130,15 @@ TEST_F(TrafficSimulationTest, ShouldSimulateValidTrafficLight) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidTrafficLight) {
     try {
         getSimulationOutput("03_tlight_bad.xml");
-    } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
+        FAIL() << "Expected invalid traffic light XML to be rejected";
+    } catch (const std::runtime_error&) {
+        SUCCEED();
     }
 }
 
-// 5. Automatische simulatie (Automatic simulation)
+// 5. Automatische simulatie
 TEST_F(TrafficSimulationTest, ShouldRunValidAutomaticSimulation) {
-    sim->loadFromFile((RES / "01_basic_ok.xml").string());
+    sim = loadFromFile("01_basic_ok.xml");
     auto initialTime = sim->currentTime;
     sim->runStep();
     auto newTime = sim->currentTime;
@@ -113,12 +148,13 @@ TEST_F(TrafficSimulationTest, ShouldRunValidAutomaticSimulation) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidAutomaticSimulation) {
     try {
         getSimulationOutput("01_basic_bad.xml");
-    } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
+        FAIL() << "Expected invalid automatic simulation XML to be rejected";
+    } catch (const std::runtime_error&) {
+        SUCCEED();
     }
 }
 
-// 6. Simpele uitvoer (Simple output)
+// 6. Simpele uitvoer
 TEST_F(TrafficSimulationTest, ShouldGenerateValidOutput) {
     std::string output = getSimulationOutput("01_basic_ok.xml");
     EXPECT_FALSE(output.empty());
@@ -129,13 +165,15 @@ TEST_F(TrafficSimulationTest, ShouldGenerateValidOutput) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidOutput) {
     try {
         getSimulationOutput("01_basic_bad.xml");
-    } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
+        FAIL() << "Expected invalid output XML to be rejected";
+    } catch (const std::runtime_error&) {
+        SUCCEED();
     }
 }
 
 // BELANGRIJK (IMPORTANT) REQUIREMENTS
-// 1. Voertuiggenerator inlezen (Loading vehicle generator)
+
+// 1. Voertuiggenerator inlezen
 TEST_F(TrafficSimulationTest, ShouldLoadValidVehicleGenerator) {
     std::string output = getSimulationOutput("07_vgenerator_ok.xml");
     EXPECT_FALSE(output.empty());
@@ -145,12 +183,13 @@ TEST_F(TrafficSimulationTest, ShouldLoadValidVehicleGenerator) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidVehicleGenerator) {
     try {
         getSimulationOutput("07_vgenerator_bad.xml");
-    } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
+        FAIL() << "Expected invalid vehicle generator XML to be rejected";
+    } catch (const std::runtime_error&) {
+        SUCCEED();
     }
 }
 
-// 2. Bushaltes inlezen (Loading bus stops)
+// 2. Bushaltes inlezen
 TEST_F(TrafficSimulationTest, ShouldLoadValidBusStops) {
     std::string output = getSimulationOutput("08_busstop_ok.xml");
     EXPECT_FALSE(output.empty());
@@ -160,12 +199,13 @@ TEST_F(TrafficSimulationTest, ShouldLoadValidBusStops) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidBusStop) {
     try {
         getSimulationOutput("08_busstop_bad.xml");
-    } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
+        FAIL() << "Expected invalid bus stop XML to be rejected";
+    } catch (const std::runtime_error&) {
+        SUCCEED();
     }
 }
 
-// 3. Kruispunten inlezen (Loading intersections)
+// 3. Kruispunten inlezen
 TEST_F(TrafficSimulationTest, ShouldLoadValidIntersections) {
     std::string output = getSimulationOutput("10_intersection_ok.xml");
     EXPECT_FALSE(output.empty());
@@ -175,14 +215,15 @@ TEST_F(TrafficSimulationTest, ShouldLoadValidIntersections) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidIntersection) {
     try {
         getSimulationOutput("10_intersection_bad.xml");
-    } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Missing required attributes") != std::string::npos);
+        FAIL() << "Expected invalid intersection XML to be rejected";
+    } catch (const std::runtime_error&) {
+        SUCCEED();
     }
 }
 
-// 4. Simulatie met voertuiggenerator (Vehicle generator simulation)
+// 4. Simulatie met voertuiggenerator
 TEST_F(TrafficSimulationTest, ShouldSimulateValidVehicleGeneration) {
-    sim->loadFromFile((RES / "07_vgenerator_ok.xml").string());
+    sim = loadFromFile("07_vgenerator_ok.xml");
     auto initialCount = sim->getVehicles().size();
     sim->runStep();
     auto newCount = sim->getVehicles().size();
@@ -192,34 +233,34 @@ TEST_F(TrafficSimulationTest, ShouldSimulateValidVehicleGeneration) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidVehicleGeneration) {
     try {
         getSimulationOutput("07_vgenerator_bad.xml");
-    } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
+        FAIL() << "Expected invalid vehicle generation XML to be rejected";
+    } catch (const std::runtime_error&) {
+        SUCCEED();
     }
 }
 
-// 5. Simulatie van bushaltes (Bus stop simulation)
+// 5. Simulatie van bushaltes
 TEST_F(TrafficSimulationTest, ShouldSimulateValidBusStops) {
-    sim->loadFromFile((RES / "08_busstop_ok.xml").string());
-    // Add a bus to the road
+    sim = loadFromFile("08_busstop_ok.xml");
     auto road = sim->getRoads()[0];
     auto bus = new Vehicle(road, 0, "bus");
     road->addVehicle(bus);
     sim->addVehicle(bus);
-    EXPECT_NO_THROW(bus->shouldWaitAt(250, 30));  // Test with bus stop position and wait time
+    EXPECT_NO_THROW(bus->shouldWaitAt(250, 30));
 }
 
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidBusStopSimulation) {
     try {
         getSimulationOutput("08_busstop_bad.xml");
-    } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Missing required elements") != std::string::npos);
+        FAIL() << "Expected invalid bus stop simulation XML to be rejected";
+    } catch (const std::runtime_error&) {
+        SUCCEED();
     }
 }
 
-// 6. Simulatie van kruispunten (Intersection simulation)
+// 6. Simulatie van kruispunten
 TEST_F(TrafficSimulationTest, ShouldSimulateValidIntersections) {
-    sim->loadFromFile((RES / "10_intersection_ok.xml").string());
-    // Add a vehicle to the road
+    sim = loadFromFile("10_intersection_ok.xml");
     auto road = sim->getRoads()[0];
     auto vehicle = new Vehicle(road, 0, "auto");
     road->addVehicle(vehicle);
@@ -231,7 +272,8 @@ TEST_F(TrafficSimulationTest, ShouldSimulateValidIntersections) {
 TEST_F(TrafficSimulationTest, ShouldFailOnInvalidIntersectionSimulation) {
     try {
         getSimulationOutput("10_intersection_bad.xml");
-    } catch (const std::runtime_error& e) {
-        EXPECT_TRUE(std::string(e.what()).find("Missing required attributes") != std::string::npos);
+        FAIL() << "Expected invalid intersection simulation XML to be rejected";
+    } catch (const std::runtime_error&) {
+        SUCCEED();
     }
 }

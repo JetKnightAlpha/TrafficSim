@@ -8,6 +8,7 @@ class Road;
 class VehicleGenerator;
 class BusStop;
 class Intersection;
+class Simulation;
 
 class Parser {
 public:

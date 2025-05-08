@@ -16,27 +16,26 @@ public:
     Simulation();
     ~Simulation();
 
-    void loadFromFile(const std::string& filename);
     void runStep();
     void run();
     void outputState() const;
     void addRoad(Road* road);
     void addTrafficLight(TrafficLight* light);
     void addVehicle(Vehicle* vehicle);
+    void addGenerator(VehicleGenerator* generator);
+    void addBusStop(BusStop* stop);
+    void addIntersection(Intersection* intersection);
 
     const std::vector<Road*>& getRoads() const;
     const std::vector<Vehicle*>& getVehicles() const;
     const std::vector<TrafficLight*>& getTrafficLights() const;
     const std::vector<Intersection*>& getIntersections() const;
+    const std::vector<BusStop*>& getBusStops() const;
 
     double currentTime;
 
 
 private:
-    void processVehicles();
-    void processTrafficLights();
-    void processGenerators();
-
     std::vector<Road*> roads;
     std::vector<Vehicle*> vehicles;
     std::vector<TrafficLight*> trafficLights;
