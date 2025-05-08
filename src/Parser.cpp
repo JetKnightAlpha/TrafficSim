@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 #include "Parser.h"
 #include "Road.h"
 #include "Vehicle.h"
@@ -19,8 +20,7 @@ void Parser::parseFile(const std::string& filename,
                        std::vector<Intersection*>& intersections) {
     std::ifstream file(filename);
     if (!file) {
-        std::cerr << "Failed to open XML file: " << filename << std::endl;
-        return;
+        throw std::runtime_error("Failed to open XML file: " + filename); // logger.failedToOpen()
     }
 
     std::stringstream buffer;
@@ -32,14 +32,12 @@ void Parser::parseFile(const std::string& filename,
     doc.Parse(buffer.str().c_str());
 
     if (doc.Error()) {
-        std::cerr << "Failed to parse XML: " << doc.ErrorDesc() << std::endl;
-        return;
+        throw std::runtime_error("Failed to parse XML: " + std::string(doc.ErrorDesc()));
     }
 
     TiXmlElement* elem = doc.FirstChildElement("ROOT")->FirstChildElement();
     if (!elem) {
-        std::cerr << "No root elements found!" << std::endl;
-        return;
+        throw std::runtime_error("No root elements found!");
     }
 
     while (elem) {
@@ -59,6 +57,7 @@ void Parser::parseFile(const std::string& filename,
             TiXmlElement* posElement = elem->FirstChildElement("positie");
             TiXmlElement* typeElement = elem->FirstChildElement("type");
             if (baanElement && posElement && typeElement) {
+                Vehicle* vehicle;
                 std::string baan = baanElement->GetText();
                 int pos = std::stoi(posElement->GetText());
                 std::string type = typeElement->GetText();
@@ -74,6 +73,13 @@ void Parser::parseFile(const std::string& filename,
                     road = new Road(baan, 1000);
                     roads.push_back(road);
                 }
+                if (pos > road->getLength()) {
+                    throw std::runtime_error("Vehicle position exceeds road length: " + std::to_string(pos));
+                }
+                if (type != "politiecombi" && type != "auto" && type != "bus"
+                    && type != "ziekenwagen" && type != "brandweerwagen") {
+                    throw std::runtime_error("Invalid vehicle type: " + type);
+                }
 
                 road->addVehicle(new Vehicle(road, pos, type));
             }
@@ -87,11 +93,16 @@ void Parser::parseFile(const std::string& filename,
                 double pos = std::stod(posElement->GetText());
                 double wachttijd = std::stod(wachttijdElement->GetText());
 
+                bool found = false;
                 for (auto* r : roads) {
                     if (r->getName() == baan) {
                         busStops.push_back(new BusStop(baan, pos, wachttijd));
+                        found = true;
                         break;
                     }
+                }
+                if (!found) {
+                    throw std::runtime_error("Bus stop refers to unknown road: " + baan);
                 }
             }
         }
@@ -119,7 +130,13 @@ void Parser::parseFile(const std::string& filename,
                     if (road1 && road2) {
                         intersections.push_back(new Intersection(road1, pos1, road2, pos2));
                     }
+                    else {
+                        throw std::runtime_error("Intersection must connect existing roads.");
+                    }
                 }
+            }
+            else {
+                throw std::runtime_error("Intersection must have 2 roads.");
             }
         }
         else if (tag == "VERKEERSLICHT") {
@@ -131,11 +148,16 @@ void Parser::parseFile(const std::string& filename,
                 double pos = std::stod(posElement->GetText());
                 int cyclus = std::stoi(cyclusElement->GetText());
 
+                bool found = false;
                 for (auto* r : roads) {
                     if (r->getName() == baan) {
                         r->addTrafficLight(new TrafficLight(r, pos, cyclus));
+                        found = true;
                         break;
                     }
+                }
+                if (!found) {
+                    throw std::runtime_error("Traffic light refers to unknown road: " + baan);
                 }
             }
         }
@@ -148,11 +170,16 @@ void Parser::parseFile(const std::string& filename,
                 int freq = std::stoi(freqElement->GetText());
                 std::string type = typeElement->GetText();
 
+                bool found = false;
                 for (auto* r : roads) {
                     if (r->getName() == baan) {
                         generators.push_back(new VehicleGenerator(r, freq, type));
+                        found = true;
                         break;
                     }
+                }
+                if (!found) {
+                    throw std::runtime_error("Vehicle generator refers to unknown road: " + baan);
                 }
             }
         }
