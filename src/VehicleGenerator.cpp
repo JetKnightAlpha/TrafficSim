@@ -20,7 +20,19 @@ void VehicleGenerator::update(double currentTime) {
             }
         }
         if (canGenerate) {
-            Vehicle* v = new Vehicle(road, 0, type);
+            Vehicle* v = nullptr;
+
+            if (type == "auto") {
+                v = new Auto(road, 0);
+            } else if (type == "bus") {
+                v = new Bus(road, 0);
+            } else if (type == "politiecombi") {
+                v = new Combi(road, 0);
+            } else if (type == "ziekenwagen") {
+                v = new Ziek(road, 0);
+            } else if (type == "brandweerwagen") {
+                v = new Brand(road, 0);
+            }
             road->addVehicle(v);
             lastGenerated = currentTime;
         }

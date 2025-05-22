@@ -15,8 +15,33 @@ const double F_MIN = 4;         // Minimum following distance
 const double xs0  = 15;         // Minimum stopping distance
 
 // Constructor initializes vehicle with road, position, type, and other attributes
-Vehicle::Vehicle(Road* road, double position, const std::string& type)
-    : road(road), position(position), speed(0), acceleration(0), vmax(Vmax), type(type) {}
+Vehicle::Vehicle(Road* road, double position)
+    : road(road), position(position), speed(0), acceleration(0), vmax(Vmax) {}
+
+// Constructor for auto
+Auto::Auto(Road* road, double position) : Vehicle(road, position) {
+    type = "auto";
+}
+
+// Constructor for bus
+Bus::Bus(Road* road, double position) : Vehicle(road, position) {
+    type = "bus";
+}
+
+// Constructor for politiecombi
+Combi::Combi(Road* road, double position) : Vehicle(road, position) {
+    type = "politiecombi";
+}
+
+// Constructor for ziekenwagen
+Ziek::Ziek(Road* road, double position) : Vehicle(road, position) {
+    type = "ziekenwagen";
+}
+
+// Constructor for brandweerwagen
+Brand::Brand(Road* road, double position) : Vehicle(road, position) {
+    type = "brandweerwagen";
+}
 
 // Calculates the vehicle's acceleration based on the leading vehicle and current state
 void Vehicle::calculateAcceleration() {
@@ -70,6 +95,11 @@ bool Vehicle::shouldWaitAt(double stopPos, double waitDuration) {
     return false;
 }
 
+// Returns the type of the vehicle
+const std::string& Vehicle::getType() const {
+    return type;
+}
+
 // Returns the position of the vehicle
 double Vehicle::getPosition() const {
     return position;
@@ -80,14 +110,13 @@ double Vehicle::getSpeed() const {
     return speed;
 }
 
-// Returns the type of the vehicle (bus, auto, etc.)
-const std::string& Vehicle::getType() const {
-    return type;
-}
-
 // Returns the acceleration of the vehicle
 double Vehicle::getAcceleration() const {
     return acceleration;
+}
+
+const Road* Vehicle::getRoad() const {
+    return road;
 }
 
 // Sets the road the vehicle is currently on

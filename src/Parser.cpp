@@ -77,12 +77,20 @@ void Parser::parseFile(const std::string& filename,
                 if (pos > road->getLength()) {
                     throw std::runtime_error("Vehicle position exceeds road length: " + std::to_string(pos));
                 }
-                if (type != "politiecombi" && type != "auto" && type != "bus"
-                    && type != "ziekenwagen" && type != "brandweerwagen") {
+                if (type == "bus") {
+                    road->addVehicle(new Bus(road, pos));
+                } else if (type == "auto") {
+                    road->addVehicle(new Auto(road, pos));
+                } else if (type == "politiecombi") {
+                    road->addVehicle(new Combi(road, pos));
+                } else if (type == "ziekenwagen") {
+                    road->addVehicle(new Ziek(road, pos));
+                } else if (type == "brandweerwagen") {
+                    road->addVehicle(new Brand(road, pos));
+                }
+                else {
                     throw std::runtime_error("Invalid vehicle type: " + type);
                 }
-
-                road->addVehicle(new Vehicle(road, pos, type));
             }
         }
         else if (tag == "BUSHALTE") {

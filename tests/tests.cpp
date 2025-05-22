@@ -243,7 +243,7 @@ TEST_F(TrafficSimulationTest, ShouldFailOnInvalidVehicleGeneration) {
 TEST_F(TrafficSimulationTest, ShouldSimulateValidBusStops) {
     sim = loadFromFile("08_busstop_ok.xml");
     auto road = sim->getRoads()[0];
-    auto bus = new Vehicle(road, 0, "bus");
+    auto bus = new Bus (road, 0);
     road->addVehicle(bus);
     sim->addVehicle(bus);
     EXPECT_NO_THROW(bus->shouldWaitAt(250, 30));
@@ -262,7 +262,7 @@ TEST_F(TrafficSimulationTest, ShouldFailOnInvalidBusStopSimulation) {
 TEST_F(TrafficSimulationTest, ShouldSimulateValidIntersections) {
     sim = loadFromFile("10_intersection_ok.xml");
     auto road = sim->getRoads()[0];
-    auto vehicle = new Vehicle(road, 0, "auto");
+    auto vehicle = new Auto(road, 0);
     road->addVehicle(vehicle);
     sim->addVehicle(vehicle);
     auto intersection = sim->getIntersections()[0];
