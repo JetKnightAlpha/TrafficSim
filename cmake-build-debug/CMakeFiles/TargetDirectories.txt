@@ -1,5 +1,0 @@
-/home/s0227075@ad.ua.ac.be/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/TrafficSimulator.dir
-/home/s0227075@ad.ua.ac.be/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/TrafficSimulatorTests.dir
-/home/s0227075@ad.ua.ac.be/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/run_tests.dir
-/home/s0227075@ad.ua.ac.be/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/s0227075@ad.ua.ac.be/CLionProjects/TrafficSim/cmake-build-debug/CMakeFiles/rebuild_cache.dir
