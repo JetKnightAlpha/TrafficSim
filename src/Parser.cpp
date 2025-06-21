@@ -11,19 +11,42 @@
 #include "Intersection.h"
 #include "../tinyxml/tinyxml.h"
 
-// Parses the XML input file and fills vectors with roads, vehicle generators,
-// bus stops, traffic lights, vehicles, and intersections based on tags
+/**
+ * @brief Parses the XML input file and constructs simulation elements.
+ * 
+ * The XML file should contain tags describing roads, vehicles, bus stops,
+ * intersections, traffic lights, and vehicle generators. The method parses
+ * the file and fills the given vectors with pointers to created objects.
+ * 
+ * Supported tags:
+ * - BAAN (road)
+ * - VOERTUIG (vehicle)
+ * - BUSHALTE (bus stop)
+ * - KRUISPUNT (intersection)
+ * - VERKEERSLICHT (traffic light)
+ * - VOERTUIGGENERATOR (vehicle generator)
+ * 
+ * @param filename Path to the XML file to parse.
+ * @param roads Vector to append pointers to Road objects.
+ * @param generators Vector to append pointers to VehicleGenerator objects.
+ * @param busStops Vector to append pointers to BusStop objects.
+ * @param intersections Vector to append pointers to Intersection objects.
+ * 
+ * @throws std::runtime_error On file I/O or XML parsing failure,
+ *         or when encountering inconsistent or invalid data.
+ */
 void Parser::parseFile(const std::string& filename,
                        std::vector<Road*>& roads,
                        std::vector<VehicleGenerator*>& generators,
                        std::vector<BusStop*>& busStops,
-                       std::vector<Intersection*>& intersections) {
-
+                       std::vector<Intersection*>& intersections) 
+{
     std::ifstream file(filename);
     if (!file) {
-        throw std::runtime_error("Failed to open XML file: " + std::string(filename));
+        throw std::runtime_error("Failed to open XML file: " + filename);
     }
 
+    // Wrap file contents with a root tag to ensure well-formed XML
     std::stringstream buffer;
     buffer << "<ROOT>";
     buffer << file.rdbuf();
@@ -38,7 +61,7 @@ void Parser::parseFile(const std::string& filename,
 
     TiXmlElement* elem = doc.FirstChildElement("ROOT")->FirstChildElement();
     if (!elem) {
-        throw std::runtime_error("No root elements found!");
+        throw std::runtime_error("No root elements found in XML file.");
     }
 
     while (elem) {
@@ -58,11 +81,11 @@ void Parser::parseFile(const std::string& filename,
             TiXmlElement* posElement = elem->FirstChildElement("positie");
             TiXmlElement* typeElement = elem->FirstChildElement("type");
             if (baanElement && posElement && typeElement) {
-                Vehicle* vehicle;
                 std::string baan = baanElement->GetText();
                 int pos = std::stoi(posElement->GetText());
                 std::string type = typeElement->GetText();
 
+                // Find the road by name or create a new default-length road
                 Road* road = nullptr;
                 for (auto* r : roads) {
                     if (r->getName() == baan) {
@@ -74,9 +97,12 @@ void Parser::parseFile(const std::string& filename,
                     road = new Road(baan, 1000);
                     roads.push_back(road);
                 }
+
                 if (pos > road->getLength()) {
                     throw std::runtime_error("Vehicle position exceeds road length: " + std::to_string(pos));
                 }
+
+                // Instantiate the correct vehicle subclass
                 if (type == "bus") {
                     road->addVehicle(new Bus(road, pos));
                 } else if (type == "auto") {
@@ -87,8 +113,7 @@ void Parser::parseFile(const std::string& filename,
                     road->addVehicle(new Ziek(road, pos));
                 } else if (type == "brandweerwagen") {
                     road->addVehicle(new Brand(road, pos));
-                }
-                else {
+                } else {
                     throw std::runtime_error("Invalid vehicle type: " + type);
                 }
             }
@@ -105,8 +130,9 @@ void Parser::parseFile(const std::string& filename,
                 bool found = false;
                 for (auto* r : roads) {
                     if (r->getName() == baan) {
-                        busStops.push_back(new BusStop(baan, pos, wachttijd));
-                        r->addBusStop(busStops.back());
+                        BusStop* busStop = new BusStop(baan, pos, wachttijd);
+                        busStops.push_back(busStop);
+                        r->addBusStop(busStop);
                         found = true;
                         break;
                     }
@@ -137,17 +163,17 @@ void Parser::parseFile(const std::string& filename,
                         if (r->getName() == roadName1) road1 = r;
                         if (r->getName() == roadName2) road2 = r;
                     }
+
                     if (road1 && road2) {
-                        intersections.push_back(new Intersection(road1, pos1, road2, pos2));
-                        road1->addIntersection(intersections.back());
-                        road2->addIntersection(intersections.back());
-                    }
-                    else {
+                        Intersection* isec = new Intersection(road1, pos1, road2, pos2);
+                        intersections.push_back(isec);
+                        road1->addIntersection(isec);
+                        road2->addIntersection(isec);
+                    } else {
                         throw std::runtime_error("Intersection must connect existing roads.");
                     }
                 }
-            }
-            else {
+            } else {
                 throw std::runtime_error("Intersection must have 2 roads.");
             }
         }
