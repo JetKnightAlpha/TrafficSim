@@ -16,6 +16,8 @@ class GraphicsEngine {
 public:
     /**
      * @brief Renders a simulation frame by displaying roads, vehicles, and traffic light statuses.
+     * @pre All pointers in roads, vehicles, and lights vectors are non-null.
+     * @post Console output has been generated that reflects the simulation state.
      *
      * @param roads Vector of pointers to roads in the simulation.
      * @param vehicles Vector of pointers to vehicles on the roads.

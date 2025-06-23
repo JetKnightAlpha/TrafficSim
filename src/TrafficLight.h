@@ -3,49 +3,45 @@
 
 #include <string>
 
+class Road;
+
 /**
  * @class TrafficLight
  * @brief Represents a traffic light on a road with a green/red cycle.
  * 
- * The traffic light cycles between green and red states based on a fixed cycle time.
- * It is associated with a specific road and a position on that road.
+ * The traffic light switches state (green/red) cyclically based on a fixed cycle time.
+ * It is positioned on a specific road at a given location.
  */
-class Road;
-
 class TrafficLight {
 public:
     /**
-     * @brief Constructs a TrafficLight on a given road at a specific position with a cycle time.
-     * @param road Pointer to the Road where the traffic light is located (must not be nullptr).
-     * @param position Position of the traffic light on the road (non-negative).
-     * @param cycle Duration of the green/red cycle in time units (must be positive).
+     * @brief Constructs a TrafficLight at a given position on a road with a cycle duration.
+     * @param road Pointer to the Road (must not be nullptr).
+     * @param position Position on the road (must be >= 0).
+     * @param cycle Cycle time for switching between green and red (must be > 0).
+     * @pre road != nullptr
+     * @pre position >= 0
+     * @pre cycle > 0
+     * @post traffic light initialized to green with lastSwitchTime = 0
      */
     TrafficLight(Road* road, double position, int cycle);
 
     /**
-     * @brief Updates the traffic light's state based on the current time.
-     * 
-     * Switches the light from green to red or vice versa if the cycle time has elapsed.
-     * @param time The current simulation time (must not go backwards).
+     * @brief Updates the light state depending on elapsed time.
+     * Switches state if cycle time has elapsed since last switch.
+     * @param time Current simulation time (monotonically increasing).
+     * @pre time >= lastSwitchTime
+     * @post toggles green/red if cycle time elapsed since lastSwitchTime
      */
     void update(double time);
 
-    /**
-     * @brief Returns the current status of the traffic light as a string.
-     * @return "green" if the light is green, "red" otherwise.
-     */
+    /** @return "green" if the light is green, otherwise "red". */
     std::string getStatus() const;
 
-    /**
-     * @brief Checks if the traffic light is currently green.
-     * @return true if green, false if red.
-     */
+    /** @return true if the light is green, false otherwise. */
     bool isGreen() const;
 
-    /**
-     * @brief Gets the position of the traffic light on the road.
-     * @return The non-negative position of the traffic light.
-     */
+    /** @return The position of the traffic light on its road (>= 0). */
     double getPosition() const;
 
 private:

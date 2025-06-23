@@ -2,6 +2,7 @@
 #include "Road.h"
 #include "Vehicle.h"
 #include "TrafficLight.h"
+#include "DesignByContract.h"
 #include <iostream>
 
 /**
@@ -19,6 +20,16 @@
 void GraphicsEngine::render(const std::vector<Road*>& roads,
                             const std::vector<Vehicle*>& vehicles,
                             const std::vector<TrafficLight*>& lights) const {
+    for (const Road* road : roads) {
+        REQUIRE(road != nullptr, "roads vector must not contain null pointers");
+    }
+    for (const Vehicle* vehicle : vehicles) {
+        REQUIRE(vehicle != nullptr, "vehicles vector must not contain null pointers");
+    }
+    for (const TrafficLight* light : lights) {
+        REQUIRE(light != nullptr, "lights vector must not contain null pointers");
+    }
+
     std::cout << "[GraphicsEngine] frame - " << roads.size() << " roads\n";
 
     for (const auto& vehicle : vehicles) {

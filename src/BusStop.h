@@ -14,6 +14,12 @@ class BusStop {
 public:
     /**
      * @brief Constructs a BusStop with the given road name, position, and wait time.
+     * @pre roadName is not empty
+     * @pre position >= 0.0
+     * @pre waitTime >= 0.0
+     * @post this->roadName == roadName
+     * @post this->position == position
+     * @post this->waitTimeSeconds == waitTime
      * 
      * @param roadName The name of the road the bus stop is on.
      * @param position The position along the road (must be non-negative).
@@ -23,21 +29,21 @@ public:
 
     /**
      * @brief Gets the name of the road where the bus stop is located.
-     * 
+     * @post returns a non-empty string
      * @return const std::string& The road name.
      */
     const std::string& getRoadName() const;
 
     /**
      * @brief Gets the position of the bus stop on the road.
-     * 
+     * @post returns a non-negative value
      * @return double The position (non-negative).
      */
     double getPosition() const;
 
     /**
      * @brief Gets the wait time for a bus at this stop.
-     * 
+     * @post returns a non-negative value
      * @return double The wait time in seconds (non-negative).
      */
     double getWaitTime() const;
