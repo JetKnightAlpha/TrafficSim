@@ -57,7 +57,7 @@ void Simulation::runStep() {
  * Stops when no vehicles remain.
  * Outputs simulation state at each step.
  */
-void Simulation::run() {
+void Simulation::run(Output* output) {
     while (true) {
         runStep();
 
@@ -72,6 +72,7 @@ void Simulation::run() {
 
         if (allRoadsEmpty) {
             std::cout << "Simulation ended, no vehicles on roads" << std::endl;
+            // output.simulationEnded();
             break;
         }
 
@@ -107,6 +108,7 @@ void Simulation::outputState() const {
                       << std::endl
                       << "-> snelheid: " << roundedSpeed
                       << "\n" << std::endl;
+            // output.printVehicle(vehicle);
             vehicleCounter++;
         }
 

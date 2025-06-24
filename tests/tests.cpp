@@ -100,7 +100,7 @@ TEST_F(TrafficSimulationTest, ShouldFailOnInvalidVehicleType) {
 
 // 3. Rijden van voertuig
 TEST_F(TrafficSimulationTest, ShouldSimulateValidVehicleMovement) {
-    sim = loadFromFile("05_vehicle_ok.xml");
+    sim = loadFromFile("05_vehicle_bad.xml");
     auto initialPos = sim->getVehicles()[0]->getPosition();
     sim->runStep();
     auto newPos = sim->getVehicles()[0]->getPosition();
