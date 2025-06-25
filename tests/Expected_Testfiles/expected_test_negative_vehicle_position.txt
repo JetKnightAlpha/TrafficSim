@@ -1,0 +1,1 @@
+REQUIRE Violation: Vehicle position must be non-negative in Road.cpp:58 

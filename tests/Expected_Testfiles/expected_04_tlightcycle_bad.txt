@@ -1,0 +1,1 @@
+REQUIRE Violation: cycle time must be positive in TrafficLight.cpp:25

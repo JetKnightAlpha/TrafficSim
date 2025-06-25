@@ -1,0 +1,9 @@
+<BAAN>
+    <naam>R</naam>
+    <lengte>100</lengte>
+</BAAN>
+<VERKEERSLICHT>
+    <baan>R</baan>
+    <positie>50</positie>
+    <cyclus>10</cyclus>
+</VERKEERSLICHT>

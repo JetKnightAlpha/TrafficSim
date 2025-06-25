@@ -1,0 +1,7 @@
+<BAAN>
+  <naam>A</naam>
+  <lengte>300</lengte>
+</BAAN>
+<KRUISPUNT>
+  <baan positie="150">A</baan>
+</KRUISPUNT>

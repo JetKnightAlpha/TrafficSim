@@ -1,0 +1,9 @@
+<BAAN>
+    <naam>Main</naam>
+    <lengte>500</lengte>
+</BAAN>
+<VOERTUIG>
+    <baan>Main</baan>
+    <positie>-10</positie>
+    <type>auto</type>
+</VOERTUIG> 

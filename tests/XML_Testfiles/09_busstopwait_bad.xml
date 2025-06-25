@@ -1,0 +1,9 @@
+<BAAN>
+    <naam>Lijn</naam>
+    <lengte>500</lengte>
+</BAAN>
+<BUSHALTE>
+    <baan>Lijn</baan>
+    <positie>250</positie>
+    <wachttijd>-5</wachttijd>
+</BUSHALTE>

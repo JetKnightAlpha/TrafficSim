@@ -1,0 +1,8 @@
+<BAAN>
+    <naam>Main</naam>
+    <lengte>500</lengte>
+<VOERTUIGGENERATOR>
+    <baan>Main</baan>
+    <frequentie>10</frequentie>
+    <type>auto</type>
+</VOERTUIGGENERATOR>

@@ -1,0 +1,14 @@
+<BAAN>
+    <naam>G</naam>
+    <lengte>200</lengte>
+</BAAN>
+<VOERTUIGGENERATOR>
+    <baan>G</baan>
+    <frequentie>5</frequentie>
+    <type>auto</type>
+</VOERTUIGGENERATOR>
+<VOERTUIGGENERATOR>
+    <baan>T</baan>
+    <frequentie>7</frequentie>
+    <type>bus</type>
+</VOERTUIGGENERATOR>

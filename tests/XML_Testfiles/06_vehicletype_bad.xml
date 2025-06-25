@@ -1,0 +1,9 @@
+<BAAN>
+    <naam>Way</naam>
+    <lengte>300</lengte>
+</BAAN>
+<VOERTUIG>
+    <baan>Way</baan>
+    <positie>0</positie>
+    <type>hovercar</type>
+</VOERTUIG>

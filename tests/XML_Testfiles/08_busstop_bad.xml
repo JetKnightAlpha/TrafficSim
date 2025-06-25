@@ -1,0 +1,9 @@
+<BAAN>
+    <naam>Ring</naam>
+    <lengte>800</lengte>
+</BAAN>
+<BUSHALTE>
+    <baan>Ghost</baan>
+    <positie>400</positie>
+    <wachttijd>xxx</wachttijd>
+<BUSHALTE>

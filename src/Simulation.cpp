@@ -57,7 +57,7 @@ void Simulation::runStep() {
  * Stops when no vehicles remain.
  * Outputs simulation state at each step.
  */
-void Simulation::run(Output* output) {
+void Simulation::run() {
     while (true) {
         runStep();
 

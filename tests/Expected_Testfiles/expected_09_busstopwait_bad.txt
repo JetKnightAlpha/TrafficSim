@@ -1,0 +1,1 @@
+Bus stop wait time must be non-negative 
